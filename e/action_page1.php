@@ -71,6 +71,7 @@ include 'config.php';
         <?php
           $pid =$_GET["instrument"];
           $date= $_GET["date"];
+          $date='2018-01-17';
           $result = $mysqli->query("SELECT * FROM products WHERE id=$pid");
           $row=$result->fetch_object();
             $total = 0;
@@ -87,8 +88,32 @@ include 'config.php';
                   echo '<td colspan="1" align="left">';
                   echo $row->price;
                   echo'</td>';
+
                   echo '<td colspan="1" align="left">';
-                 // echo $row->;
+                  // Finding which table to use by reading the instrument id.
+                 if($pid==1){$table_name="slot_scale";}
+                 elseif ($pid==2){$table_name="slot_vernier_caliper";}
+                 else {$table_name="slot_screw_gauge";}
+
+                 // Query to store all the slot data.
+                 $q=$mysqli->query("SELECT slot_7,slot_8,slot_9,slot_10,slot_11,slot_12,slot_13,slot_14,slot_15,slot_16,slot_17,slot_18,slot_19,slot_20,slot_21,slot_22 FROM $table_name WHERE slot_date='$date'");
+
+                 // Loop to print only thoese slots that are available on that day.
+                 if($q)
+                 {
+                  $i=1;
+                  $slots=$q->fetch_object();
+                  echo '<select name="booya">';
+                  if($slots->slot_7!=0){echo' <option value="'.$i.'">'.$slots->slot_7.'</option>';$i++;}
+                  elseif ($slots->slot_8!=0) {echo' <option value="'.$i.'">'.$slots->slot_8.'</option>';$i++;}
+                  echo '</select>';
+
+                
+                 }
+                 else
+                 {
+                  echo "Error in SQL";
+                 }
                   echo'</td>';
           ?>
           

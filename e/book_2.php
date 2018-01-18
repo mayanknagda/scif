@@ -161,10 +161,8 @@ include 'config.php';
         $conf=0;
         $in_id=(int)$id;
         echo $order_date;
-        $order_date=$mysqli->real_escape_string($order_date);
-        $product_code=$mysqli->real_escape_string($product_code);
-        $product_name=$mysqli->real_escape_string($product_name);
-        $push=$mysqli->query("INSERT INTO orders (user_id, date_of_order, product_code, product_name) VALUES($in_id, '$order_date', '$product_code', '$product_name')");
+        $od = date('Y-m-d', strtotime($order_date));
+        $push=$mysqli->query("INSERT INTO orders ( user_id, date_of_order, product_code, product_name) VALUES(($in_id, '$od', '$product_code', '$product_name')");
         if($push)
         {
           $conf=1;
@@ -176,13 +174,15 @@ include 'config.php';
 
 
         // Blocking the Slot
-        $bs=$mysqli->query("INSERT INTO ")
+
+        // CODE STILL TO BE WRITTEN!
 
        // End of Push
+        echo "<br>";
         echo $conf;
-        echo gettype($order_date);
-        echo gettype($pron);
-        echo gettype($pc);
+        echo gettype($od);
+        echo gettype($product_name);
+        echo gettype($product_code);
         echo gettype($in_id);
         echo '<table cellpadding="2" cellspacing="2" width: 400px>';
         echo "<tr>";

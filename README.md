@@ -1,3 +1,7 @@
-write about your commits here
+Contributors:
+Mayank Nagda
+Sankalp Sinha
 
-hahahaahah
+-----------------------------
+Write about your commits here
+

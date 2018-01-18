@@ -36,13 +36,13 @@ try {
     $mail->isSMTP();                                      // Set mailer to use SMTP
     $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
     $mail->SMTPAuth = true;                               // Enable SMTP authentication
-    $mail->Username = 'yourmail.com';                 // SMTP username
-    $mail->Password = 'yourpassword';                           // SMTP password
+    $mail->Username = 'projecttestbot@gmail.com';                 // SMTP username
+    $mail->Password = 'sankalpsinha';                           // SMTP password
     $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
     $mail->Port = 587;                                    // TCP port to connect to
 
     //Recipients
-    $mail->setFrom('theietsrmstudentchapter@gmail.com', 'SCIF Admin');
+    $mail->setFrom('noreply@SCIF.ac.in', 'SCIF Admin');
      $mail->addAddress($email, $fname);     // Add a recipient
 
     //Content

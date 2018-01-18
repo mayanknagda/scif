@@ -67,7 +67,7 @@ include 'config.php';
 
     <div class="row" style="margin-top:10px;">
       <div class="large-12">
-        <p><h3>Book Instruments</h3></p>
+        <p><h3>Book Instrument</h3></p>
         <?php
 
             $total = 0;
@@ -78,7 +78,7 @@ include 'config.php';
             echo '</tr>';
             $result = $mysqli->query("SELECT id, product_name, price FROM products");
                 echo '<tr>';
-                  echo '<td colspan="1" align="left"><form action="action_page1.php" method="get">';
+                  echo '<td colspan="1" align="left"><form action="book_1.php" method="POST">';
                   echo '<select name="instrument">';
                   while($row=$result->fetch_object()){
                    echo' <option value="'.$row->id.'">'.$row->product_name.'</option>';
@@ -90,6 +90,7 @@ include 'config.php';
             echo'</tr>';
             echo'<tr>';
             echo'<td>';
+            echo "<td>";
             echo '<button type=submit style="float:right;">Book</button>';
             echo '</form>';
           echo '</tr>';
@@ -97,8 +98,6 @@ include 'config.php';
           echo '</div>';
           echo '</div>';
           ?>
-
-
 
     <div class="row" style="margin-top:10px;">
       <div class="small-12">
@@ -109,8 +108,8 @@ include 'config.php';
       </div>
     </div>
  
-<!--<p>Date: <input type="text" id="datepicker"></p>-->
- 
- 
 </body>
 </html>
+
+<!-- Refrence for Humans-->
+<!--<p>Date: <input type="text" id="datepicker"></p>-->

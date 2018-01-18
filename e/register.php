@@ -8,6 +8,7 @@ if (isset($_SESSION["username"])) {header ("location:index.php");}
 
 ?>
 
+
 <!doctype html>
 <html class="no-js" lang="en">
   <head>
@@ -16,6 +17,19 @@ if (isset($_SESSION["username"])) {header ("location:index.php");}
     <title>SCIF</title>
     <link rel="stylesheet" href="css/foundation.css" />
     <script src="js/vendor/modernizr.js"></script>
+    <script type="text/javascript">
+      function validateForm() {
+    var x = document.forms["register"]["pwd"].value;
+    var y = document.forms["register"]["rpwd"].value;
+    if (x !=y) {
+        alert("Password don't match");
+        return false;
+    }
+    else{
+      return true;
+    }
+} 
+    </script>
   </head>
   <body>
 
@@ -51,7 +65,7 @@ if (isset($_SESSION["username"])) {header ("location:index.php");}
         </ul>
       </section>
     </nav>
-    <form method="POST" action="insert.php" style="margin-top:30px;">
+    <form name="register" method="POST" action="insert.php" onsubmit="return validateForm()" style="margin-top:30px;">
       <div class="row">
         <div class="small-8">
 
@@ -60,7 +74,7 @@ if (isset($_SESSION["username"])) {header ("location:index.php");}
               <label for="right-label" class="right inline">First Name</label>
             </div>
             <div class="small-8 columns">
-              <input type="text" id="right-label" placeholder="Enter First Name" name="fname">
+              <input type="text" id="right-label" placeholder="Enter First Name" name="fname" required>
             </div>
           </div>
           <div class="row">
@@ -68,7 +82,7 @@ if (isset($_SESSION["username"])) {header ("location:index.php");}
               <label for="right-label" class="right inline">Last Name</label>
             </div>
             <div class="small-8 columns">
-              <input type="text" id="right-label" placeholder="Enter Last Name" name="lname">
+              <input type="text" id="right-label" placeholder="Enter Last Name" name="lname" required>
             </div>
           </div>
           <div class="row">
@@ -76,7 +90,7 @@ if (isset($_SESSION["username"])) {header ("location:index.php");}
               <label for="right-label" class="right inline">Institute</label>
             </div>
             <div class="small-8 columns">
-              <input type="text" id="right-label" placeholder="Enter Institute Name" name="institute">
+              <input type="text" id="right-label" placeholder="Enter Institute Name" name="institute" required>
             </div>
           </div>
           <div class="row">
@@ -84,7 +98,7 @@ if (isset($_SESSION["username"])) {header ("location:index.php");}
               <label for="right-label" class="right inline">Institute ID</label>
             </div>
             <div class="small-8 columns">
-              <input type="text" id="right-label" placeholder="Enter Your Institute ID" name="iid">
+              <input type="text" id="right-label" placeholder="Enter Your Institute ID" name="iid" required>
             </div>
           </div>
           <div class="row">
@@ -92,7 +106,7 @@ if (isset($_SESSION["username"])) {header ("location:index.php");}
               <label for="right-label" class="right inline">Full Address</label>
             </div>
             <div class="small-8 columns">
-              <input type="text" id="right-label" placeholder="Give Your Full Address" name="address">
+              <input type="text" id="right-label" placeholder="Give Your Full Address" name="address" required>
             </div>
           </div>
           <div class="row">
@@ -100,7 +114,7 @@ if (isset($_SESSION["username"])) {header ("location:index.php");}
               <label for="right-label" class="right inline">E-Mail</label>
             </div>
             <div class="small-8 columns">
-              <input type="email" id="right-label" placeholder="Enter your Email" name="email">
+              <input type="email" id="right-label" placeholder="Enter your Email" name="email" required>
             </div>
           </div>
           <div class="row">
@@ -108,7 +122,7 @@ if (isset($_SESSION["username"])) {header ("location:index.php");}
               <label for="right-label" class="right inline">Phone No</label>
             </div>
             <div class="small-8 columns">
-              <input type="text" id="right-label" placeholder="Enter your Phone No" name="phno">
+              <input type="text" id="right-label" placeholder="Enter your Phone No" name="phno" required="">
             </div>
           </div>
           <div class="row">
@@ -116,7 +130,15 @@ if (isset($_SESSION["username"])) {header ("location:index.php");}
               <label for="right-label" class="right inline">Password</label>
             </div>
             <div class="small-8 columns">
-              <input type="password" id="right-label" name="pwd">
+              <input type="password" id="right-label" name="pwd" required>
+            </div>
+          </div>
+          <div class="row">
+            <div class="small-4 columns">
+              <label for="right-label" class="right inline">Password Again</label>
+            </div>
+            <div class="small-8 columns">
+              <input id="right-label" type="password" name="rpwd" required>
             </div>
           </div>
           <div class="row">

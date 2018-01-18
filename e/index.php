@@ -23,17 +23,18 @@ if(session_id() == '' || !isset($_SESSION)){session_start();}
         </li>
         <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
       </ul>
-
       <section class="top-bar-section">
       <!-- Right Nav Section -->
-        <ul class="right">
-          <li><a href="about.php">About</a></li>
-          <li><a href="products.php">Instruments</a></li>
-          <li><a href="cart.php">View Bookings</a></li>
-          <li><a href="orders.php">My Bookings</a></li>
-          <li><a href="contact.php">Contact</a></li>
-<!--if login is there then we'll use this-->
+      <ul class="right">
+        <li><a href="about.php">About</a></li>
+        <li><a href="facilities.php">Facilities</a></li>
+        <li><a href="services.php">Services</a></li>
+        <li><a href="products.php">Instruments</a></li>
+        <li><a href="cart.php">View Bookings</a></li>
+        <li><a href="orders.php">My Bookings</a></li>
+        <li><a href="contact.php">Contact</a></li>
           <?php
+
           if(isset($_SESSION['username'])){
             echo '<li><a href="account.php">My Account</a></li>';
             echo '<li><a href="logout.php">Log Out</a></li>';
@@ -46,10 +47,6 @@ if(session_id() == '' || !isset($_SESSION)){session_start();}
         </ul>
       </section>
     </nav>
-
-
-
-
     <img data-interchange="[images/srm.jpg, (retina)], [images/srm.jpg, (large)], [images/srm.jpg, (mobile)], [images/srm.jpg, (medium)]">
     <noscript><img src="images/srm.jpg"></noscript>
 
@@ -63,11 +60,6 @@ if(session_id() == '' || !isset($_SESSION)){session_start();}
 
       </div>
     </div>
-
-
-
-
-
     <script src="js/vendor/jquery.js"></script>
     <script src="js/foundation.min.js"></script>
     <script>

@@ -10,7 +10,7 @@ $password = $_POST["pwd"];
 $flag = 'true';
 //$query = $mysqli->query("SELECT email, password from users");
 
-$result = $mysqli->query('SELECT id,email,password,fname,type from users order by id asc');
+$result = $mysqli->query('SELECT id,email,pwd,fname,type from users order by id asc');
 
 if($result === FALSE){
   die(mysql_error());
@@ -18,7 +18,7 @@ if($result === FALSE){
 
 if($result){
   while($obj = $result->fetch_object()){
-    if($obj->email === $username && $obj->password === $password) {
+    if($obj->email === $username && $obj->pwd === $password) {
 
       $_SESSION['username'] = $username;
       $_SESSION['type'] = $obj->type;
@@ -39,6 +39,4 @@ function redirect() {
   echo '<h1>Invalid Login! Redirecting...</h1>';
   header("Refresh: 3; url=index.php");
 }
-
-
 ?>

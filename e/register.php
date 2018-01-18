@@ -31,6 +31,8 @@ if (isset($_SESSION["username"])) {header ("location:index.php");}
       <!-- Right Nav Section -->
       <ul class="right">
         <li><a href="about.php">About</a></li>
+        <li><a href="facilities.php">Facilities</a></li>
+        <li><a href="services.php">Services</a></li>
         <li><a href="products.php">Instruments</a></li>
         <li><a href="cart.php">View Bookings</a></li>
         <li><a href="orders.php">My Bookings</a></li>
@@ -43,17 +45,12 @@ if (isset($_SESSION["username"])) {header ("location:index.php");}
           }
           else{
             echo '<li><a href="login.php">Log In</a></li>';
-            echo '<li class="active"><a href="register.php">Register</a></li>';
+            echo '<li><a href="register.php">Register</a></li>';
           }
           ?>
         </ul>
       </section>
     </nav>
-
-
-
-
-
     <form method="POST" action="insert.php" style="margin-top:30px;">
       <div class="row">
         <div class="small-8">
@@ -76,26 +73,26 @@ if (isset($_SESSION["username"])) {header ("location:index.php");}
           </div>
           <div class="row">
             <div class="small-4 columns">
-              <label for="right-label" class="right inline">Address</label>
+              <label for="right-label" class="right inline">Institute</label>
             </div>
             <div class="small-8 columns">
-              <input type="text" id="right-label" placeholder="Enter Address" name="address">
+              <input type="text" id="right-label" placeholder="Enter Institute Name" name="institute">
             </div>
           </div>
           <div class="row">
             <div class="small-4 columns">
-              <label for="right-label" class="right inline">City</label>
+              <label for="right-label" class="right inline">Institute ID</label>
             </div>
             <div class="small-8 columns">
-              <input type="text" id="right-label" placeholder="Enter City" name="city">
+              <input type="text" id="right-label" placeholder="Enter Your Institute ID" name="iid">
             </div>
           </div>
           <div class="row">
             <div class="small-4 columns">
-              <label for="right-label" class="right inline">Pin Code</label>
+              <label for="right-label" class="right inline">Full Address</label>
             </div>
             <div class="small-8 columns">
-              <input type="number" id="right-label" placeholder="Enter Pin" name="pin">
+              <input type="text" id="right-label" placeholder="Give Your Full Address" name="address">
             </div>
           </div>
           <div class="row">
@@ -104,6 +101,14 @@ if (isset($_SESSION["username"])) {header ("location:index.php");}
             </div>
             <div class="small-8 columns">
               <input type="email" id="right-label" placeholder="Enter your Email" name="email">
+            </div>
+          </div>
+          <div class="row">
+            <div class="small-4 columns">
+              <label for="right-label" class="right inline">Phone No</label>
+            </div>
+            <div class="small-8 columns">
+              <input type="text" id="right-label" placeholder="Enter your Phone No" name="phno">
             </div>
           </div>
           <div class="row">

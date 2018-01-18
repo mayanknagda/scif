@@ -37,6 +37,8 @@ include 'config.php';
       <!-- Right Nav Section -->
       <ul class="right">
         <li><a href="about.php">About</a></li>
+        <li><a href="facilities.php">Facilities</a></li>
+        <li><a href="services.php">Services</a></li>
         <li><a href="products.php">Instruments</a></li>
         <li><a href="cart.php">View Bookings</a></li>
         <li><a href="orders.php">My Bookings</a></li>

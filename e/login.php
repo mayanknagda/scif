@@ -33,6 +33,8 @@ if(isset($_SESSION["username"])){
       <!-- Right Nav Section -->
       <ul class="right">
         <li><a href="about.php">About</a></li>
+        <li><a href="facilities.php">Facilities</a></li>
+        <li><a href="services.php">Services</a></li>
         <li><a href="products.php">Instruments</a></li>
         <li><a href="cart.php">View Bookings</a></li>
         <li><a href="orders.php">My Bookings</a></li>
@@ -44,18 +46,13 @@ if(isset($_SESSION["username"])){
             echo '<li><a href="logout.php">Log Out</a></li>';
           }
           else{
-            echo '<li class="active"><a href="login.php">Log In</a></li>';
+            echo '<li><a href="login.php">Log In</a></li>';
             echo '<li><a href="register.php">Register</a></li>';
           }
           ?>
         </ul>
       </section>
     </nav>
-
-
-
-
-
     <form method="POST" action="verify.php" style="margin-top:30px;">
       <div class="row">
         <div class="small-8">
@@ -100,10 +97,6 @@ if(isset($_SESSION["username"])){
 
       </div>
     </div>
-
-
-
-
     <script src="js/vendor/jquery.js"></script>
     <script src="js/foundation.min.js"></script>
     <script>

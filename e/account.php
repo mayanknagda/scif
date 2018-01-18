@@ -41,14 +41,15 @@ include 'config.php';
       <!-- Right Nav Section -->
       <ul class="right">
         <li><a href="about.php">About</a></li>
+        <li><a href="facilities.php">Facilities</a></li>
+        <li><a href="services.php">Services</a></li>
         <li><a href="products.php">Instruments</a></li>
         <li><a href="cart.php">View Bookings</a></li>
         <li><a href="orders.php">My Bookings</a></li>
         <li><a href="contact.php">Contact</a></li>
           <?php
-
           if(isset($_SESSION['username'])){
-            echo '<li class="active"><a href="account.php">My Account</a></li>';
+            echo '<li><a href="account.php">My Account</a></li>';
             echo '<li><a href="logout.php">Log Out</a></li>';
           }
           else{
@@ -59,17 +60,13 @@ include 'config.php';
         </ul>
       </section>
     </nav>
-
-
-
-
     <div class="row" style="margin-top:30px;">
       <div class="small-12">
         <p><?php echo '<h3>Hi ' .$_SESSION['fname'] .'</h3>'; ?></p>
 
         <p><h4>Account Details</h4></p>
 
-        <p>Below are your details in the database. If you wish to change anything, then just enter new data in text box and click on update.</p>
+        <p>Below are your details in the database.</p>
       </div>
     </div>
 

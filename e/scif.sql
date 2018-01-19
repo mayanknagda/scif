@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 18, 2018 at 10:53 AM
+-- Generation Time: Jan 19, 2018 at 08:25 AM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.2.0
 
@@ -77,25 +77,19 @@ CREATE TABLE `home` (
 --
 
 CREATE TABLE `orders` (
-  `id` int(15) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `date_of_order` date NOT NULL,
   `product_code` varchar(255) NOT NULL,
   `product_name` varchar(255) NOT NULL,
-  `product_desc` varchar(255) NOT NULL,
-  `price` int(10) NOT NULL,
-  `units` int(5) NOT NULL,
-  `total` int(15) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `email` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `order_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `product_code`, `product_name`, `product_desc`, `price`, `units`, `total`, `date`, `email`) VALUES
-(12, 'SCIF1', 'Scale', 'Short description about scale', 5000, 2, 10000, '2018-01-15 07:13:13', 'mayank@scif.com'),
-(13, 'SCIF1', 'Scale', 'Short description about scale', 5000, 1, 5000, '2018-01-15 07:50:22', 'sankalponfire@gmail.com'),
-(14, 'SCIF2', 'Vernier Calipers', 'Shoert description about Vernier Calipers', 200, 1, 200, '2018-01-15 07:50:25', 'sankalponfire@gmail.com');
+INSERT INTO `orders` (`user_id`, `date_of_order`, `product_code`, `product_name`, `order_id`) VALUES
+(2, '2018-01-19', 'SCIF1', 'Scale', 1001);
 
 -- --------------------------------------------------------
 
@@ -143,22 +137,22 @@ CREATE TABLE `services` (
 CREATE TABLE `slot_scale` (
   `slot_id` int(10) NOT NULL,
   `slot_date` date NOT NULL,
-  `slot_7` varchar(255) NOT NULL DEFAULT '0',
-  `slot_8` varchar(255) NOT NULL DEFAULT '0',
-  `slot_9` varchar(255) NOT NULL DEFAULT '0',
-  `slot_10` varchar(255) NOT NULL DEFAULT '0',
-  `slot_11` varchar(255) NOT NULL DEFAULT '0',
-  `slot_12` varchar(255) NOT NULL DEFAULT '0',
-  `slot_13` varchar(255) NOT NULL DEFAULT '0',
-  `slot_14` varchar(255) NOT NULL DEFAULT '0',
-  `slot_15` varchar(255) NOT NULL DEFAULT '0',
-  `slot_16` varchar(255) NOT NULL DEFAULT '0',
-  `slot_17` varchar(255) NOT NULL DEFAULT '0',
-  `slot_18` varchar(255) NOT NULL DEFAULT '0',
-  `slot_19` varchar(255) NOT NULL DEFAULT '0',
-  `slot_20` varchar(255) NOT NULL DEFAULT '0',
-  `slot_21` varchar(255) NOT NULL DEFAULT '0',
-  `slot_22` varchar(255) NOT NULL DEFAULT '0'
+  `slot_7` varchar(255) NOT NULL DEFAULT '1',
+  `slot_8` varchar(255) NOT NULL DEFAULT '1',
+  `slot_9` varchar(255) NOT NULL DEFAULT '1',
+  `slot_10` varchar(255) NOT NULL DEFAULT '1',
+  `slot_11` varchar(255) NOT NULL DEFAULT '1',
+  `slot_12` varchar(255) NOT NULL DEFAULT '1',
+  `slot_13` varchar(255) NOT NULL DEFAULT '1',
+  `slot_14` varchar(255) NOT NULL DEFAULT '1',
+  `slot_15` varchar(255) NOT NULL DEFAULT '1',
+  `slot_16` varchar(255) NOT NULL DEFAULT '1',
+  `slot_17` varchar(255) NOT NULL DEFAULT '1',
+  `slot_18` varchar(255) NOT NULL DEFAULT '1',
+  `slot_19` varchar(255) NOT NULL DEFAULT '1',
+  `slot_20` varchar(255) NOT NULL DEFAULT '1',
+  `slot_21` varchar(255) NOT NULL DEFAULT '1',
+  `slot_22` varchar(255) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='slot table for scale.';
 
 --
@@ -166,8 +160,7 @@ CREATE TABLE `slot_scale` (
 --
 
 INSERT INTO `slot_scale` (`slot_id`, `slot_date`, `slot_7`, `slot_8`, `slot_9`, `slot_10`, `slot_11`, `slot_12`, `slot_13`, `slot_14`, `slot_15`, `slot_16`, `slot_17`, `slot_18`, `slot_19`, `slot_20`, `slot_21`, `slot_22`) VALUES
-(1, '2018-01-31', '100', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'),
-(2, '2018-01-17', '100', '100', '100', '100', '100', '100', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
+(1, '2018-01-19', '1001', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1');
 
 -- --------------------------------------------------------
 
@@ -249,7 +242,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `fname`, `lname`, `institute`, `iid`, `address`, `email`, `pwd`, `phno`, `type`, `hash`, `active`) VALUES
-(1, 'Mayank', 'Nagda', 'SRM Univ', 'RA1511003010313', 'Green Pearl 308 A', 'nagdamayank05@gmail.com', 'manku', '07358318333', 'user', 'c7e1249ffc03eb9ded908c236bd1996d', 1);
+(2, 'Sankalp', 'Sinha', 'SRM Institute of Science and Technology', 'RA1511003010379', 'A-308, Green Pearl Hostel, Priyear Street, Potheri, Tamilnadu, India.', 'sankalpsinha_ro@srmuniv.edu.in', '1', '+918838464151', 'user', 'f4b9ec30ad9f68f89b29639786cb62ef', 1),
+(3, 'ABC', 'DEF', 'x', 'y', 'z', '2@g', '2', '0000000000', 'user', '00ac8ed3b4327bdd4ebbebcb2ba10a00', 1),
+(4, 'G', 'H', 'I', 'J', 'H', 'L@G', '1', '1111111111', 'user', '3c7781a36bcd6cf08c11a970fbe0e2a6', 1),
+(5, 'M', 'N', 'O', 'P', 'Q', 'R@G', '1', '222222222', 'user', '1ce927f875864094e3906a4a0b5ece68', 1),
+(6, 'S', 'T', 'U', 'V', 'W', 'X@g', '1', '333333333', 'user', '8a0e1141fd37fa5b98d5bb769ba1a7cc', 1);
 
 --
 -- Indexes for dumped tables
@@ -283,7 +280,8 @@ ALTER TABLE `home`
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `Unique` (`order_id`);
 
 --
 -- Indexes for table `products`
@@ -355,7 +353,7 @@ ALTER TABLE `home`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1002;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -373,7 +371,7 @@ ALTER TABLE `services`
 -- AUTO_INCREMENT for table `slot_scale`
 --
 ALTER TABLE `slot_scale`
-  MODIFY `slot_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `slot_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `slot_screw_gauge`
@@ -391,7 +389,7 @@ ALTER TABLE `slot_vernier_caliper`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

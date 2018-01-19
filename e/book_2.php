@@ -160,9 +160,7 @@ include 'config.php';
         // Pushing data into the database.
         $conf=0;
         $in_id=(int)$id;
-        echo $order_date;
-        $od = date('Y-m-d', strtotime($order_date));
-        $push=$mysqli->query("INSERT INTO orders ( user_id, date_of_order, product_code, product_name) VALUES(($in_id, '$od', '$product_code', '$product_name')");
+        $push=$mysqli->query("INSERT INTO orders (user_id, date_of_order, product_code, product_name) VALUES ($in_id, '$order_date', '$product_code', '$product_name')");
         if($push)
         {
           $conf=1;
@@ -174,16 +172,30 @@ include 'config.php';
 
 
         // Blocking the Slot
+        $ins_id=$_SESSION['instrument']; //instrument id
+        $table_name;
+        $slot_string=(string)($slot+6);
+        $slot_c="slot_".$slot_string;
+        echo $slot_c;
+        if($ins_id==1){$table_name="slot_scale"; echo $table_name;}
+        else if($ins_id==2){$table_name="slot_screw_gauge";}
+        else if($ins_id==3){$table_name="slot_vernier_caliper";}
 
-        // CODE STILL TO BE WRITTEN!
+
+        $slot_blocked=0; // By Default te slot is not booked.
+        $slot_block=$mysqli->query("UPDATE slot_scale SET $slot_c='2' WHERE slot_date='$order_date'");
+        if($slot_block)
+        {
+          $slot_blocked=1;
+        }
+        else 
+        {
+          $slot_blocked=0;
+        }
 
        // End of Push
         echo "<br>";
-        echo $conf;
-        echo gettype($od);
-        echo gettype($product_name);
-        echo gettype($product_code);
-        echo gettype($in_id);
+        echo "<br>";
         echo '<table cellpadding="2" cellspacing="2" width: 400px>';
         echo "<tr>";
         echo "<th>Name</th>";

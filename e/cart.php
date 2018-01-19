@@ -69,7 +69,7 @@ include 'config.php';
       <div class="large-12">
         <p><h3>Book Instrument</h3></p>
         <?php
-
+    
             $total = 0;
             echo '<table>';
             echo '<tr>';

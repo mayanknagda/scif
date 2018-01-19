@@ -157,7 +157,12 @@ include 'config.php';
         // End of code to display the instrument name and price section in the table
         
 
-        // Pushing data into the database.
+        // Pushing order into ordrs table.
+        $booya=$mysqli->query("SELECT * FROM orders");
+        if(!$booya->fetch_object())
+        {
+          $booya2=$mysqli->query("ALTER TABLE orders AUTO_INCREMENT = 1001");
+        }
         $conf=0;
         $in_id=(int)$id;
         $push=$mysqli->query("INSERT INTO orders (user_id, date_of_order, product_code, product_name) VALUES ($in_id, '$order_date', '$product_code', '$product_name')");
@@ -169,9 +174,12 @@ include 'config.php';
         {
           $conf=0;
         }
-
+        // End of Push
 
         // Blocking the Slot
+        $booya3=$mysqli->query("SELECT order_id FROM orders");
+        $booya4=$booya3->fetch_object();
+        $booya5=(string)$booya4->order_id;
         $ins_id=$_SESSION['instrument']; //instrument id
         $table_name;
         $slot_string=(string)($slot+6);
@@ -183,7 +191,7 @@ include 'config.php';
 
 
         $slot_blocked=0; // By Default te slot is not booked.
-        $slot_block=$mysqli->query("UPDATE slot_scale SET $slot_c='2' WHERE slot_date='$order_date'");
+        $slot_block=$mysqli->query("UPDATE slot_scale SET $slot_c='$booya5' WHERE slot_date='$order_date'");
         if($slot_block)
         {
           $slot_blocked=1;
@@ -193,7 +201,9 @@ include 'config.php';
           $slot_blocked=0;
         }
 
-       // End of Push
+       // End of Slot Blocking
+
+        // Drawing the order confirmation table.
         echo "<br>";
         echo "<br>";
         echo '<table cellpadding="2" cellspacing="2" width: 400px>';
@@ -214,11 +224,16 @@ include 'config.php';
         echo '<td colspan="1" align="left">';
         echo $price;
         echo "<td colspan='1' align='left'>$slot_start_time $prefix - $slot_end_time $postfix</td>";
-        echo '<td colspan="1" align="left">Confimed</td>';
+        echo '<td colspan="1" align="left">';
+        if($slot_blocked==1)
+        {
+        echo 'Confirmed';
+        }
+        else
+        {
+          echo 'Denied';
+        }
         echo '</tr>';
-
-
-
       }
         ?>
       </div>

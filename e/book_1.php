@@ -75,8 +75,7 @@ include 'config.php';
           $pid =$_POST["instrument"];
           $wdate= $_POST["date"];
           $date = date('Y-m-d', strtotime($wdate)); //date format do not change! This will break SQL if chnaged. Took me hours to get this right. please i beg you.
-
-         
+       
           $result = $mysqli->query("SELECT * FROM products WHERE id=$pid");
           $row=$result->fetch_object();
             $total = 0;
@@ -101,6 +100,13 @@ include 'config.php';
                  elseif ($pid==2){$table_name="slot_vernier_caliper";}
                  else {$table_name="slot_screw_gauge";}
 
+                 // Insert into instrument table
+                 $win=$mysqli->query("SELECT slot_date FROM $table_name WHERE slot_date='$date'");
+                 if(!$win->fetch_object())
+                 {
+                 $in=$mysqli->query("INSERT INTO $table_name (slot_date) VALUES ('$date')");
+                 }
+
                  // Query to store all the slot data.
                  $q=$mysqli->query("SELECT slot_7,slot_8,slot_9,slot_10,slot_11,slot_12,slot_13,slot_14,slot_15,slot_16,slot_17,slot_18,slot_19,slot_20,slot_21,slot_22 FROM $table_name WHERE slot_date='$date'");
 
@@ -110,22 +116,22 @@ include 'config.php';
                   $i=1;
                   $slots=$q->fetch_object();
                   echo '<select name="slot">';
-                  if($slots->slot_7!=0) {echo' <option value="'.'1'.'">'."7AM - 8AM".'</option>';$i++;}
-                  if ($slots->slot_8!=0) {echo' <option value="'.'2'.'">'."8AM - 9AM".'</option>';$i++;}
-                  if ($slots->slot_9!=0) {echo' <option value="'.'3'.'">'."9AM - 10AM".'</option>';$i++;}
-                  if ($slots->slot_10!=0) {echo' <option value="'.'4'.'">'."10AM - 11AM".'</option>';$i++;}
-                  if ($slots->slot_11!=0) {echo' <option value="'.'5'.'">'."11AM - 12Noon".'</option>';$i++;}
-                  if ($slots->slot_12!=0) {echo' <option value="'.'6'.'">'."12Noon - 1PM".'</option>';$i++;}
-                  if ($slots->slot_13!=0) {echo' <option value="'.'7'.'">'."1PM - 2PM".'</option>';$i++;}
-                  if ($slots->slot_14!=0) {echo' <option value="'.'8'.'">'."2PM - 3PM".'</option>';$i++;}
-                  if ($slots->slot_15!=0) {echo' <option value="'.'9'.'">'."3PM - 4PM".'</option>';$i++;}
-                  if ($slots->slot_16!=0) {echo' <option value="'.'10'.'">'."4PM - 5PM".'</option>';$i++;}
-                  if ($slots->slot_17!=0) {echo' <option value="'.'11'.'">'."5PM - 6PM".'</option>';$i++;}
-                  if ($slots->slot_18!=0) {echo' <option value="'.'12'.'">'."6PM - 7PM".'</option>';$i++;}
-                  if ($slots->slot_19!=0) {echo' <option value="'.'13'.'">'."7PM - 8PM".'</option>';$i++;}
-                  if ($slots->slot_20!=0) {echo' <option value="'.'14'.'">'."8PM - 9PM".'</option>';$i++;}
-                  if ($slots->slot_21!=0) {echo' <option value="'.'15'.'">'."9PM - 10PM".'</option>';$i++;}
-                  if ($slots->slot_22!=0) {echo' <option value="'.'16'.'">'."10PM - 11PM".'</option>';$i++;}
+                  if($slots->slot_7!=0 && $slots->slot_7<1001) {echo' <option value="'.'1'.'">'."7AM - 8AM".'</option>';$i++;}
+                  if ($slots->slot_8!=0 && $slots->slot_8<1001) {echo' <option value="'.'2'.'">'."8AM - 9AM".'</option>';$i++;}
+                  if ($slots->slot_9!=0 && $slots->slot_9<1001) {echo' <option value="'.'3'.'">'."9AM - 10AM".'</option>';$i++;}
+                  if ($slots->slot_10!=0 && $slots->slot_10<1001) {echo' <option value="'.'4'.'">'."10AM - 11AM".'</option>';$i++;}
+                  if ($slots->slot_11!=0 && $slots->slot_11<1001) {echo' <option value="'.'5'.'">'."11AM - 12Noon".'</option>';$i++;}
+                  if ($slots->slot_12!=0 && $slots->slot_12<1001) {echo' <option value="'.'6'.'">'."12Noon - 1PM".'</option>';$i++;}
+                  if ($slots->slot_13!=0 && $slots->slot_13<1001) {echo' <option value="'.'7'.'">'."1PM - 2PM".'</option>';$i++;}
+                  if ($slots->slot_14!=0 && $slots->slot_14<1001) {echo' <option value="'.'8'.'">'."2PM - 3PM".'</option>';$i++;}
+                  if ($slots->slot_15!=0 && $slots->slot_15<1001) {echo' <option value="'.'9'.'">'."3PM - 4PM".'</option>';$i++;}
+                  if ($slots->slot_16!=0 && $slots->slot_16<1001) {echo' <option value="'.'10'.'">'."4PM - 5PM".'</option>';$i++;}
+                  if ($slots->slot_17!=0 && $slots->slot_17<1001) {echo' <option value="'.'11'.'">'."5PM - 6PM".'</option>';$i++;}
+                  if ($slots->slot_18!=0 && $slots->slot_18<1001) {echo' <option value="'.'12'.'">'."6PM - 7PM".'</option>';$i++;}
+                  if ($slots->slot_19!=0 && $slots->slot_19<1001) {echo' <option value="'.'13'.'">'."7PM - 8PM".'</option>';$i++;}
+                  if ($slots->slot_20!=0 && $slots->slot_20<1001) {echo' <option value="'.'14'.'">'."8PM - 9PM".'</option>';$i++;}
+                  if ($slots->slot_21!=0 && $slots->slot_21<1001) {echo' <option value="'.'15'.'">'."9PM - 10PM".'</option>';$i++;}
+                  if ($slots->slot_22!=0 && $slots->slot_22<1001) {echo' <option value="'.'16'.'">'."10PM - 11PM".'</option>';$i++;}
                   echo '</select>';
                  }
                  else

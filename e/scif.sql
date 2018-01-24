@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 19, 2018 at 08:25 AM
+-- Generation Time: Jan 24, 2018 at 09:45 AM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.2.0
 
@@ -104,17 +104,18 @@ CREATE TABLE `products` (
   `product_desc` text NOT NULL,
   `product_img_name` varchar(60) NOT NULL,
   `qty` int(5) NOT NULL,
-  `price` decimal(10,2) NOT NULL
+  `price` decimal(10,2) NOT NULL,
+  `pi` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `product_code`, `product_name`, `product_desc`, `product_img_name`, `qty`, `price`) VALUES
-(1, 'SCIF1', 'Scale', 'Short description about scale', 'scale.jpg', 23, '5000.00'),
-(2, 'SCIF2', 'Vernier Calipers', 'Shoert description about Vernier Calipers', 'vc.JPG', 6, '200.00'),
-(3, 'SCIF3', 'Screw Gauge', 'Short description about screw gauge', 'sg.jpg', 34, '1000.00');
+INSERT INTO `products` (`id`, `product_code`, `product_name`, `product_desc`, `product_img_name`, `qty`, `price`, `pi`) VALUES
+(1, 'SCIF1', 'Scale', 'Short description about scale', 'scale.jpg', 23, '5000.00', 'sir 1'),
+(2, 'SCIF2', 'Vernier Calipers', 'Shoert description about Vernier Calipers', 'vc.JPG', 6, '200.00', 'sir 2'),
+(3, 'SCIF3', 'Screw Gauge', 'Short description about screw gauge', 'sg.jpg', 34, '1000.00', 'sir 3');
 
 -- --------------------------------------------------------
 
@@ -242,11 +243,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `fname`, `lname`, `institute`, `iid`, `address`, `email`, `pwd`, `phno`, `type`, `hash`, `active`) VALUES
-(2, 'Sankalp', 'Sinha', 'SRM Institute of Science and Technology', 'RA1511003010379', 'A-308, Green Pearl Hostel, Priyear Street, Potheri, Tamilnadu, India.', 'sankalpsinha_ro@srmuniv.edu.in', '1', '+918838464151', 'user', 'f4b9ec30ad9f68f89b29639786cb62ef', 1),
+(2, 'Sankalp', 'Sinha', 'SRM Institute of Science and Technology', 'RA1511003010379', 'A-308, Green Pearl Hostel, Priyear Street, Potheri, Tamilnadu, India.', 'sankalpsinha_ro@srmuniv.edu.in', '1', '+918838464151', 'admin', 'f4b9ec30ad9f68f89b29639786cb62ef', 1),
 (3, 'ABC', 'DEF', 'x', 'y', 'z', '2@g', '2', '0000000000', 'user', '00ac8ed3b4327bdd4ebbebcb2ba10a00', 1),
 (4, 'G', 'H', 'I', 'J', 'H', 'L@G', '1', '1111111111', 'user', '3c7781a36bcd6cf08c11a970fbe0e2a6', 1),
 (5, 'M', 'N', 'O', 'P', 'Q', 'R@G', '1', '222222222', 'user', '1ce927f875864094e3906a4a0b5ece68', 1),
-(6, 'S', 'T', 'U', 'V', 'W', 'X@g', '1', '333333333', 'user', '8a0e1141fd37fa5b98d5bb769ba1a7cc', 1);
+(6, 'S', 'T', 'U', 'V', 'W', 'X@g', '1', '333333333', 'user', '8a0e1141fd37fa5b98d5bb769ba1a7cc', 1),
+(7, 'Ram', 'Lakhan', 'SRM Univsersity', 'RA1511003010379', 'PF-328, SRM Hostels,', 'sankalponfire@gmail.com', '1', '77777777777', 'user', 'bbcbff5c1f1ded46c25d28119a85c6c2', 0);
 
 --
 -- Indexes for dumped tables
@@ -389,7 +391,7 @@ ALTER TABLE `slot_vernier_caliper`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

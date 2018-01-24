@@ -56,8 +56,9 @@ if(session_id() == '' || !isset($_SESSION)){session_start();}
 
     <div class="row" style="margin-top:30px;">
       <div class="small-12">
-        <p>SCIF portal provides consolidated state-of-the-art research facilities available in SRMIST and allows users to directly reserve time for use.
+        <p>About SCIF<br>SCIF portal provides consolidated state-of-the-art research facilities available in SRMIST and allows users to directly reserve time for use.
         </p>
+        <img src="images/machine.jpg">
 
         <footer>
            <p style="text-align:center; font-size:0.8em;">&copy; SCIF</p>

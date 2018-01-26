@@ -3,6 +3,23 @@ include ('php/session.php');
 include ('php/config.php');
 include ('php/head.php');
 ?>
+<?php
+if(isset($_POST['submit']))
+{
+  $secretkey="6LcTm0IUAAAAADuyAomlTpglyqiMyrAnJRq1LCSs";
+  $responsekey=$_POST['g-recaptcha-response'];
+  $user_ip=$_SERVER['REMOTE_ADDR'];
+  $url="https://www.google.com/recaptcha/api/siteverify?secret=$secretkey&response=$responsekey&remoteip=$user_ip";
+  $response=file_get_contents($url);
+  $response=json_decode($response);
+}
+?>
+<script type="text/javascript">
+  function enableBtn(){
+    document.getElementById("button1").disabled = false;
+   }
+</script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
 <script type="text/javascript">
       function validateForm() {
     var x = document.forms["register"]["pwd"].value;
@@ -16,6 +33,7 @@ include ('php/head.php');
     }
 } 
     </script>
+
 
 
     <form name="register" method="POST" action="insert.php" onsubmit="return validateForm()" style="margin-top:30px;">
@@ -93,13 +111,12 @@ include ('php/head.php');
             <div class="small-8 columns">
               <input id="right-label" type="password" name="rpwd" required>
             </div>
-          </div>
-          <div class="row">
+             <div class="row">
             <div class="small-4 columns">
-
-            </div>
+            <div class="g-recaptcha" data-sitekey="6LcTm0IUAAAAAIezGBR6NHwapviB3at76Numylmi" data-callback="enableBtn"></div>
+          </div>
             <div class="small-8 columns">
-              <input type="submit" id="right-label" value="Register" style="background: #0078A0; border: none; color: #fff; font-family: 'Helvetica Neue', sans-serif; font-size: 1em; padding: 10px;">
+              <input type="submit" name="submit" id="button1" value="Register" disabled="true" style="background: #0078A0; border: none; color: #fff; font-family: 'Helvetica Neue', sans-serif; font-size: 1em; padding: 10px;">
               <input type="reset" id="right-label" value="Reset" style="background: #0078A0; border: none; color: #fff; font-family: 'Helvetica Neue', sans-serif; font-size: 1em; padding: 10px;">
             </div>
           </div>

@@ -1,10 +1,7 @@
 <?php
-
 //if (session_status() !== PHP_SESSION_ACTIVE) {session_start();}
 if(session_id() == '' || !isset($_SESSION)){session_start();}
-
 ?>
-
 <!doctype html>
 <html class="no-js" lang="en">
   <head>
@@ -15,7 +12,6 @@ if(session_id() == '' || !isset($_SESSION)){session_start();}
     <script src="js/vendor/modernizr.js"></script>
   </head>
   <body>
-
     <nav class="top-bar" data-topbar role="navigation">
       <ul class="title-area">
         <li class="name">
@@ -48,27 +44,15 @@ if(session_id() == '' || !isset($_SESSION)){session_start();}
         </ul>
       </section>
     </nav>
-
-
-
-
     <div class="row" style="margin-top:10px;">
       <div class="small-12">
         <p>Success. Whatever task you performed, has been executed successfully. Congrats!</p>
         <p>In case you purchased a product, then please check your spam in email for the receipt.</p>
-
-
         <footer style="margin-top:10px;">
            <p style="text-align:center; font-size:0.8em;">&copy; SCIF</p>
         </footer>
-
       </div>
     </div>
-
-
-
-
-
     <script src="js/vendor/jquery.js"></script>
     <script src="js/foundation.min.js"></script>
     <script>

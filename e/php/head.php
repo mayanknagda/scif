@@ -15,6 +15,27 @@ echo '<!doctype html>
     $( "#datepicker" ).datepicker({minDate: 0, maxDate: 7});
   } );
   </script>
+<style type="text/css">
+
+  .boxed {
+  border: 1px solid green ;
+}
+</style>
+  <style type="text/css">
+
+  table {
+    table-layout: auto;
+    border-collapse: collapse;
+    width: 100%;
+}
+table td {
+    border: 1px solid #ccc;
+}
+table .absorbing-column {
+    width: 100%;
+}
+
+</style>
 </head>
 <body>
 

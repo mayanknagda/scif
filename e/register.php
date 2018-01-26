@@ -33,9 +33,6 @@ if(isset($_POST['submit']))
     }
 } 
     </script>
-
-
-
     <form name="register" method="POST" action="insert.php" onsubmit="return validateForm()" style="margin-top:30px;">
       <div class="row">
         <div class="small-8">
@@ -123,21 +120,13 @@ if(isset($_POST['submit']))
         </div>
       </div>
     </form>
-
-
     <div class="row" style="margin-top:10px;">
       <div class="small-12">
-
         <footer>
            <p style="text-align:center; font-size:0.8em;">&copy; SCIF</p>
         </footer>
-
       </div>
     </div>
-
-
-
-
     <script src="js/vendor/jquery.js"></script>
     <script src="js/foundation.min.js"></script>
     <script>

@@ -50,18 +50,16 @@ try {
     $mail->Subject = 'Verification link - SICF Admin';
     $mail->Body    = '
  
-Thanks for signing up!
-Your SCIF account has been created, you can login with the registered credentials after you have activated your account by clicking the url below.
+Thanks for signing up!<br>
+Your SCIF account has been created, you can login with the registered credentials after you have activated your account by clicking the url below.<br>
  
-Please click this link to activate your account:
+Please click this link to activate your account:<br>
 http://localhost/e/verify-email.php?email='.$email.'&hash='.$hash.''; // Our message above including the link
     //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-
     $mail->send();
     echo 'Message has been sent';
 } catch (Exception $e) {
     echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
 }
-
 header("location:login.php");
 ?>

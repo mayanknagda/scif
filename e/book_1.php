@@ -16,7 +16,7 @@ include ('php/head.php');
           $row=$result->fetch_object();
             $total = 0;
             echo '<form action="book_2.php" method="POST">';
-            echo '<table>';
+            echo '<table table class="absorbing-column">';
             echo '<tr>';
             echo '<th>Instrument Selected</th>';
             echo '<th>Cost</th>';

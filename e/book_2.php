@@ -96,8 +96,7 @@ include ('php/head.php');
         // End of code to display the instrument name and price section in the table
         
 
-        // The Code below is executed only once.
-        // If the orders table is empty then we will set its auto increment to 1001 manually to ensure that the first order id starts from 1001 and orders henceforth are incremented by 1. 
+        // Order id manual creation.
         $oi;// Order_id
         $q3=$mysqli->query("SELECT * FROM orders");
         if(!$q3->fetch_object())

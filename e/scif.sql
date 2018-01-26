@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 26, 2018 at 02:39 AM
+-- Generation Time: Jan 26, 2018 at 03:53 AM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.2.0
 
@@ -54,25 +54,16 @@ CREATE TABLE `orders` (
   `slot_time` text NOT NULL,
   `product_code` varchar(255) NOT NULL,
   `product_name` varchar(255) NOT NULL,
-  `order_id` int(11) NOT NULL
+  `order_id` int(11) NOT NULL,
+  `status` enum('0','1') NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`user_id`, `date_of_order`, `slot_time`, `product_code`, `product_name`, `order_id`) VALUES
-(2, '2018-01-01', '10 AM - 11 AM', 'SCIF1', 'HRTEM', 1001),
-(2, '2018-01-26', '8 AM - 9 AM', 'SCIF1', 'HRTEM', 1002),
-(2, '2018-01-16', '7 AM - 8 AM', 'SCIF1', 'HRTEM', 1003),
-(2, '2018-01-27', '7 AM - 8 AM', 'SCIF1', 'HRTEM', 1004),
-(2, '2018-01-11', '7 AM - 8 AM', 'SCIF2', 'MRS', 1005),
-(2, '2018-01-23', '7 AM - 8 AM', 'SCIF3', 'XRD', 1006),
-(2, '2018-01-08', '7 AM - 8 AM', 'SCIF1', 'HRTEM', 1007),
-(2, '2018-01-17', '7 AM - 8 AM', 'SCIF1', 'HRTEM', 1008),
-(2, '2018-01-09', '7 AM - 8 AM', 'SCIF1', 'HRTEM', 1009),
-(2, '2018-01-21', '7 AM - 8 AM', 'SCIF1', 'HRTEM', 1010),
-(2, '2018-01-13', '7 AM - 8 AM', 'SCIF2', 'MRS', 1011);
+INSERT INTO `orders` (`user_id`, `date_of_order`, `slot_time`, `product_code`, `product_name`, `order_id`, `status`) VALUES
+(2, '2018-01-26', '7 AM - 8 AM', 'SCIF1', 'HRTEM', 1001, '0');
 
 -- --------------------------------------------------------
 
@@ -132,15 +123,7 @@ CREATE TABLE `slot_hrtem` (
 --
 
 INSERT INTO `slot_hrtem` (`slot_id`, `slot_date`, `slot_7`, `slot_8`, `slot_9`, `slot_10`, `slot_11`, `slot_12`, `slot_13`, `slot_14`, `slot_15`, `slot_16`, `slot_17`, `slot_18`, `slot_19`, `slot_20`, `slot_21`, `slot_22`) VALUES
-(1, '2018-01-01', '1001', '1', '1', '1001', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'),
-(2, '2018-01-26', '1001', '1002', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'),
-(3, '2018-01-16', '1003', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'),
-(4, '2018-01-27', '1004', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'),
-(5, '2018-01-08', '1007', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'),
-(6, '2018-01-17', '1008', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'),
-(7, '2018-01-23', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'),
-(8, '2018-01-09', '1009', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'),
-(9, '2018-01-21', '1010', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1');
+(1, '2018-01-26', '1001', '1', '1', '1', '1', '1001', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1');
 
 -- --------------------------------------------------------
 
@@ -169,15 +152,6 @@ CREATE TABLE `slot_raman` (
   `slot_22` varchar(255) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='slot table for scale.';
 
---
--- Dumping data for table `slot_raman`
---
-
-INSERT INTO `slot_raman` (`slot_id`, `slot_date`, `slot_7`, `slot_8`, `slot_9`, `slot_10`, `slot_11`, `slot_12`, `slot_13`, `slot_14`, `slot_15`, `slot_16`, `slot_17`, `slot_18`, `slot_19`, `slot_20`, `slot_21`, `slot_22`) VALUES
-(1, '2018-01-01', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'),
-(2, '2018-01-11', '1005', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'),
-(3, '2018-01-13', '1011', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1');
-
 -- --------------------------------------------------------
 
 --
@@ -204,15 +178,6 @@ CREATE TABLE `slot_xrd` (
   `slot_21` varchar(255) NOT NULL DEFAULT '1',
   `slot_22` varchar(255) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='slot table for scale.';
-
---
--- Dumping data for table `slot_xrd`
---
-
-INSERT INTO `slot_xrd` (`slot_id`, `slot_date`, `slot_7`, `slot_8`, `slot_9`, `slot_10`, `slot_11`, `slot_12`, `slot_13`, `slot_14`, `slot_15`, `slot_16`, `slot_17`, `slot_18`, `slot_19`, `slot_20`, `slot_21`, `slot_22`) VALUES
-(1, '2018-01-05', '1', '1', '1', '1', '1002', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'),
-(2, '2018-01-23', '1006', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'),
-(3, '2018-01-21', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1');
 
 -- --------------------------------------------------------
 
@@ -310,19 +275,19 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `slot_hrtem`
 --
 ALTER TABLE `slot_hrtem`
-  MODIFY `slot_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `slot_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `slot_raman`
 --
 ALTER TABLE `slot_raman`
-  MODIFY `slot_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `slot_id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `slot_xrd`
 --
 ALTER TABLE `slot_xrd`
-  MODIFY `slot_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `slot_id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`

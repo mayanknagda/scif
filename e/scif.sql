@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 24, 2018 at 09:45 AM
+-- Generation Time: Jan 26, 2018 at 02:39 AM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.2.0
 
@@ -25,50 +25,22 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `about`
+-- Table structure for table `link`
 --
 
-CREATE TABLE `about` (
-  `about_id` int(10) NOT NULL,
-  `about_content` text CHARACTER SET utf8 NOT NULL COMMENT 'Contents of About Page go here.',
-  `about_status` enum('1','0') CHARACTER SET utf8 NOT NULL DEFAULT '1' COMMENT '1-live 0-dead'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
+CREATE TABLE `link` (
+  `pid` int(11) NOT NULL,
+  `table_name` varchar(32) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='This table stores the  link between product id and the produ';
 
 --
--- Table structure for table `contact`
+-- Dumping data for table `link`
 --
 
-CREATE TABLE `contact` (
-  `contact_id` int(10) NOT NULL,
-  `contact_content` text CHARACTER SET utf8 NOT NULL COMMENT 'The Contents of the Contact page go here.',
-  `contact_status` enum('1','0') CHARACTER SET utf8 NOT NULL DEFAULT '1' COMMENT '1-Alive 0-Dead'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `facilities`
---
-
-CREATE TABLE `facilities` (
-  `facilities_id` int(10) NOT NULL,
-  `facilities_content` text CHARACTER SET utf8 NOT NULL,
-  `facilities_status` enum('1','0') CHARACTER SET utf8 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `home`
---
-
-CREATE TABLE `home` (
-  `home_id` int(10) NOT NULL,
-  `home_content` text CHARACTER SET utf8 NOT NULL,
-  `home_status` enum('1','0') CHARACTER SET utf8 NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO `link` (`pid`, `table_name`) VALUES
+(1, 'slot_hrtem'),
+(2, 'slot_raman'),
+(3, 'slot_xrd');
 
 -- --------------------------------------------------------
 
@@ -79,6 +51,7 @@ CREATE TABLE `home` (
 CREATE TABLE `orders` (
   `user_id` int(11) NOT NULL,
   `date_of_order` date NOT NULL,
+  `slot_time` text NOT NULL,
   `product_code` varchar(255) NOT NULL,
   `product_name` varchar(255) NOT NULL,
   `order_id` int(11) NOT NULL
@@ -88,8 +61,18 @@ CREATE TABLE `orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`user_id`, `date_of_order`, `product_code`, `product_name`, `order_id`) VALUES
-(2, '2018-01-19', 'SCIF1', 'Scale', 1001);
+INSERT INTO `orders` (`user_id`, `date_of_order`, `slot_time`, `product_code`, `product_name`, `order_id`) VALUES
+(2, '2018-01-01', '10 AM - 11 AM', 'SCIF1', 'HRTEM', 1001),
+(2, '2018-01-26', '8 AM - 9 AM', 'SCIF1', 'HRTEM', 1002),
+(2, '2018-01-16', '7 AM - 8 AM', 'SCIF1', 'HRTEM', 1003),
+(2, '2018-01-27', '7 AM - 8 AM', 'SCIF1', 'HRTEM', 1004),
+(2, '2018-01-11', '7 AM - 8 AM', 'SCIF2', 'MRS', 1005),
+(2, '2018-01-23', '7 AM - 8 AM', 'SCIF3', 'XRD', 1006),
+(2, '2018-01-08', '7 AM - 8 AM', 'SCIF1', 'HRTEM', 1007),
+(2, '2018-01-17', '7 AM - 8 AM', 'SCIF1', 'HRTEM', 1008),
+(2, '2018-01-09', '7 AM - 8 AM', 'SCIF1', 'HRTEM', 1009),
+(2, '2018-01-21', '7 AM - 8 AM', 'SCIF1', 'HRTEM', 1010),
+(2, '2018-01-13', '7 AM - 8 AM', 'SCIF2', 'MRS', 1011);
 
 -- --------------------------------------------------------
 
@@ -113,29 +96,17 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `product_code`, `product_name`, `product_desc`, `product_img_name`, `qty`, `price`, `pi`) VALUES
-(1, 'SCIF1', 'Scale', 'Short description about scale', 'scale.jpg', 23, '5000.00', 'sir 1'),
-(2, 'SCIF2', 'Vernier Calipers', 'Shoert description about Vernier Calipers', 'vc.JPG', 6, '200.00', 'sir 2'),
-(3, 'SCIF3', 'Screw Gauge', 'Short description about screw gauge', 'sg.jpg', 34, '1000.00', 'sir 3');
+(1, 'SCIF1', 'HRTEM', 'Hi-Resolution Transmission Electron Microscope.\r\nMade By: JEOL, Japan', 'machine.jpg', 23, '5000.00', 'sir 1'),
+(2, 'SCIF2', 'MRS', 'Micro-Raman Spectrometer\r\nMade By: HORIBA France, LABRAM HR Evolution', 'machine.jpg', 6, '200.00', 'sir 2'),
+(3, 'SCIF3', 'XRD', 'X-Ray Diffractometer (XRD)\r\nMade By: BRUKER', 'machine.jpg', 34, '1000.00', 'sir 3');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `services`
+-- Table structure for table `slot_hrtem`
 --
 
-CREATE TABLE `services` (
-  `services_id` int(10) NOT NULL,
-  `services_content` text CHARACTER SET utf8 NOT NULL,
-  `services_status` enum('1','0') CHARACTER SET utf8 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `slot_scale`
---
-
-CREATE TABLE `slot_scale` (
+CREATE TABLE `slot_hrtem` (
   `slot_id` int(10) NOT NULL,
   `slot_date` date NOT NULL,
   `slot_7` varchar(255) NOT NULL DEFAULT '1',
@@ -157,65 +128,91 @@ CREATE TABLE `slot_scale` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='slot table for scale.';
 
 --
--- Dumping data for table `slot_scale`
+-- Dumping data for table `slot_hrtem`
 --
 
-INSERT INTO `slot_scale` (`slot_id`, `slot_date`, `slot_7`, `slot_8`, `slot_9`, `slot_10`, `slot_11`, `slot_12`, `slot_13`, `slot_14`, `slot_15`, `slot_16`, `slot_17`, `slot_18`, `slot_19`, `slot_20`, `slot_21`, `slot_22`) VALUES
-(1, '2018-01-19', '1001', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1');
+INSERT INTO `slot_hrtem` (`slot_id`, `slot_date`, `slot_7`, `slot_8`, `slot_9`, `slot_10`, `slot_11`, `slot_12`, `slot_13`, `slot_14`, `slot_15`, `slot_16`, `slot_17`, `slot_18`, `slot_19`, `slot_20`, `slot_21`, `slot_22`) VALUES
+(1, '2018-01-01', '1001', '1', '1', '1001', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'),
+(2, '2018-01-26', '1001', '1002', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'),
+(3, '2018-01-16', '1003', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'),
+(4, '2018-01-27', '1004', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'),
+(5, '2018-01-08', '1007', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'),
+(6, '2018-01-17', '1008', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'),
+(7, '2018-01-23', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'),
+(8, '2018-01-09', '1009', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'),
+(9, '2018-01-21', '1010', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `slot_screw_gauge`
+-- Table structure for table `slot_raman`
 --
 
-CREATE TABLE `slot_screw_gauge` (
+CREATE TABLE `slot_raman` (
   `slot_id` int(10) NOT NULL,
-  `date` date NOT NULL,
-  `slot_7` varchar(255) NOT NULL DEFAULT '0',
-  `slot_8` varchar(255) NOT NULL DEFAULT '0',
-  `slot_9` varchar(255) NOT NULL DEFAULT '0',
-  `slot_10` varchar(255) NOT NULL DEFAULT '0',
-  `slot_11` varchar(255) NOT NULL DEFAULT '0',
-  `slot_12` varchar(255) NOT NULL DEFAULT '0',
-  `slot_13` varchar(255) NOT NULL DEFAULT '0',
-  `slot_14` varchar(255) NOT NULL DEFAULT '0',
-  `slot_15` varchar(255) NOT NULL DEFAULT '0',
-  `slot_16` varchar(255) NOT NULL DEFAULT '0',
-  `slot_17` varchar(255) NOT NULL DEFAULT '0',
-  `slot_18` varchar(255) NOT NULL DEFAULT '0',
-  `slot_19` varchar(255) NOT NULL DEFAULT '0',
-  `slot_20` varchar(255) NOT NULL DEFAULT '0',
-  `slot_21` varchar(255) NOT NULL DEFAULT '0',
-  `slot_22` varchar(255) NOT NULL DEFAULT '0'
+  `slot_date` date NOT NULL,
+  `slot_7` varchar(255) NOT NULL DEFAULT '1',
+  `slot_8` varchar(255) NOT NULL DEFAULT '1',
+  `slot_9` varchar(255) NOT NULL DEFAULT '1',
+  `slot_10` varchar(255) NOT NULL DEFAULT '1',
+  `slot_11` varchar(255) NOT NULL DEFAULT '1',
+  `slot_12` varchar(255) NOT NULL DEFAULT '1',
+  `slot_13` varchar(255) NOT NULL DEFAULT '1',
+  `slot_14` varchar(255) NOT NULL DEFAULT '1',
+  `slot_15` varchar(255) NOT NULL DEFAULT '1',
+  `slot_16` varchar(255) NOT NULL DEFAULT '1',
+  `slot_17` varchar(255) NOT NULL DEFAULT '1',
+  `slot_18` varchar(255) NOT NULL DEFAULT '1',
+  `slot_19` varchar(255) NOT NULL DEFAULT '1',
+  `slot_20` varchar(255) NOT NULL DEFAULT '1',
+  `slot_21` varchar(255) NOT NULL DEFAULT '1',
+  `slot_22` varchar(255) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='slot table for scale.';
+
+--
+-- Dumping data for table `slot_raman`
+--
+
+INSERT INTO `slot_raman` (`slot_id`, `slot_date`, `slot_7`, `slot_8`, `slot_9`, `slot_10`, `slot_11`, `slot_12`, `slot_13`, `slot_14`, `slot_15`, `slot_16`, `slot_17`, `slot_18`, `slot_19`, `slot_20`, `slot_21`, `slot_22`) VALUES
+(1, '2018-01-01', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'),
+(2, '2018-01-11', '1005', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'),
+(3, '2018-01-13', '1011', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `slot_vernier_caliper`
+-- Table structure for table `slot_xrd`
 --
 
-CREATE TABLE `slot_vernier_caliper` (
+CREATE TABLE `slot_xrd` (
   `slot_id` int(10) NOT NULL,
-  `date` date NOT NULL,
-  `slot_7` varchar(255) NOT NULL DEFAULT '0',
-  `slot_8` varchar(255) NOT NULL DEFAULT '0',
-  `slot_9` varchar(255) NOT NULL DEFAULT '0',
-  `slot_10` varchar(255) NOT NULL DEFAULT '0',
-  `slot_11` varchar(255) NOT NULL DEFAULT '0',
-  `slot_12` varchar(255) NOT NULL DEFAULT '0',
-  `slot_13` varchar(255) NOT NULL DEFAULT '0',
-  `slot_14` varchar(255) NOT NULL DEFAULT '0',
-  `slot_15` varchar(255) NOT NULL DEFAULT '0',
-  `slot_16` varchar(255) NOT NULL DEFAULT '0',
-  `slot_17` varchar(255) NOT NULL DEFAULT '0',
-  `slot_18` varchar(255) NOT NULL DEFAULT '0',
-  `slot_19` varchar(255) NOT NULL DEFAULT '0',
-  `slot_20` varchar(255) NOT NULL DEFAULT '0',
-  `slot_21` varchar(255) NOT NULL DEFAULT '0',
-  `slot_22` varchar(255) NOT NULL DEFAULT '0'
+  `slot_date` date NOT NULL,
+  `slot_7` varchar(255) NOT NULL DEFAULT '1',
+  `slot_8` varchar(255) NOT NULL DEFAULT '1',
+  `slot_9` varchar(255) NOT NULL DEFAULT '1',
+  `slot_10` varchar(255) NOT NULL DEFAULT '1',
+  `slot_11` varchar(255) NOT NULL DEFAULT '1',
+  `slot_12` varchar(255) NOT NULL DEFAULT '1',
+  `slot_13` varchar(255) NOT NULL DEFAULT '1',
+  `slot_14` varchar(255) NOT NULL DEFAULT '1',
+  `slot_15` varchar(255) NOT NULL DEFAULT '1',
+  `slot_16` varchar(255) NOT NULL DEFAULT '1',
+  `slot_17` varchar(255) NOT NULL DEFAULT '1',
+  `slot_18` varchar(255) NOT NULL DEFAULT '1',
+  `slot_19` varchar(255) NOT NULL DEFAULT '1',
+  `slot_20` varchar(255) NOT NULL DEFAULT '1',
+  `slot_21` varchar(255) NOT NULL DEFAULT '1',
+  `slot_22` varchar(255) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='slot table for scale.';
+
+--
+-- Dumping data for table `slot_xrd`
+--
+
+INSERT INTO `slot_xrd` (`slot_id`, `slot_date`, `slot_7`, `slot_8`, `slot_9`, `slot_10`, `slot_11`, `slot_12`, `slot_13`, `slot_14`, `slot_15`, `slot_16`, `slot_17`, `slot_18`, `slot_19`, `slot_20`, `slot_21`, `slot_22`) VALUES
+(1, '2018-01-05', '1', '1', '1', '1', '1002', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'),
+(2, '2018-01-23', '1006', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'),
+(3, '2018-01-21', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1');
 
 -- --------------------------------------------------------
 
@@ -248,42 +245,18 @@ INSERT INTO `users` (`id`, `fname`, `lname`, `institute`, `iid`, `address`, `ema
 (4, 'G', 'H', 'I', 'J', 'H', 'L@G', '1', '1111111111', 'user', '3c7781a36bcd6cf08c11a970fbe0e2a6', 1),
 (5, 'M', 'N', 'O', 'P', 'Q', 'R@G', '1', '222222222', 'user', '1ce927f875864094e3906a4a0b5ece68', 1),
 (6, 'S', 'T', 'U', 'V', 'W', 'X@g', '1', '333333333', 'user', '8a0e1141fd37fa5b98d5bb769ba1a7cc', 1),
-(7, 'Ram', 'Lakhan', 'SRM Univsersity', 'RA1511003010379', 'PF-328, SRM Hostels,', 'sankalponfire@gmail.com', '1', '77777777777', 'user', 'bbcbff5c1f1ded46c25d28119a85c6c2', 0);
+(7, 'Ram', 'Lakhan', 'SRM Univsersity', 'RA1511003010379', 'PF-328, SRM Hostels,', 'sankalponfire@gmail.com', '1', '77777777777', 'user', 'bbcbff5c1f1ded46c25d28119a85c6c2', 0),
+(8, 'test', 'test', 'SRM Univsersity', '1', '1', '3@g', '3', '1111111111', 'user', '32bb90e8976aab5298d5da10fe66f21d', 0);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `about`
+-- Indexes for table `link`
 --
-ALTER TABLE `about`
-  ADD PRIMARY KEY (`about_id`);
-
---
--- Indexes for table `contact`
---
-ALTER TABLE `contact`
-  ADD PRIMARY KEY (`contact_id`);
-
---
--- Indexes for table `facilities`
---
-ALTER TABLE `facilities`
-  ADD PRIMARY KEY (`facilities_id`);
-
---
--- Indexes for table `home`
---
-ALTER TABLE `home`
-  ADD PRIMARY KEY (`home_id`);
-
---
--- Indexes for table `orders`
---
-ALTER TABLE `orders`
-  ADD PRIMARY KEY (`user_id`),
-  ADD UNIQUE KEY `Unique` (`order_id`);
+ALTER TABLE `link`
+  ADD PRIMARY KEY (`pid`);
 
 --
 -- Indexes for table `products`
@@ -293,27 +266,21 @@ ALTER TABLE `products`
   ADD UNIQUE KEY `product_code` (`product_code`);
 
 --
--- Indexes for table `services`
+-- Indexes for table `slot_hrtem`
 --
-ALTER TABLE `services`
-  ADD PRIMARY KEY (`services_id`);
-
---
--- Indexes for table `slot_scale`
---
-ALTER TABLE `slot_scale`
+ALTER TABLE `slot_hrtem`
   ADD PRIMARY KEY (`slot_id`);
 
 --
--- Indexes for table `slot_screw_gauge`
+-- Indexes for table `slot_raman`
 --
-ALTER TABLE `slot_screw_gauge`
+ALTER TABLE `slot_raman`
   ADD PRIMARY KEY (`slot_id`);
 
 --
--- Indexes for table `slot_vernier_caliper`
+-- Indexes for table `slot_xrd`
 --
-ALTER TABLE `slot_vernier_caliper`
+ALTER TABLE `slot_xrd`
   ADD PRIMARY KEY (`slot_id`);
 
 --
@@ -328,34 +295,10 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `about`
+-- AUTO_INCREMENT for table `link`
 --
-ALTER TABLE `about`
-  MODIFY `about_id` int(10) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `contact`
---
-ALTER TABLE `contact`
-  MODIFY `contact_id` int(10) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `facilities`
---
-ALTER TABLE `facilities`
-  MODIFY `facilities_id` int(10) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `home`
---
-ALTER TABLE `home`
-  MODIFY `home_id` int(10) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `orders`
---
-ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1002;
+ALTER TABLE `link`
+  MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -364,34 +307,28 @@ ALTER TABLE `products`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `services`
+-- AUTO_INCREMENT for table `slot_hrtem`
 --
-ALTER TABLE `services`
-  MODIFY `services_id` int(10) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `slot_hrtem`
+  MODIFY `slot_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `slot_scale`
+-- AUTO_INCREMENT for table `slot_raman`
 --
-ALTER TABLE `slot_scale`
-  MODIFY `slot_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `slot_raman`
+  MODIFY `slot_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `slot_screw_gauge`
+-- AUTO_INCREMENT for table `slot_xrd`
 --
-ALTER TABLE `slot_screw_gauge`
-  MODIFY `slot_id` int(10) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `slot_vernier_caliper`
---
-ALTER TABLE `slot_vernier_caliper`
-  MODIFY `slot_id` int(10) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `slot_xrd`
+  MODIFY `slot_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

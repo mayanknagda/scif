@@ -32,7 +32,7 @@ include 'php/config.php';
     <nav class="top-bar" data-topbar role="navigation">
       <ul class="title-area">
         <li class="name">
-          <h1><a href="index.php">SCIF Administrator</a></h1>
+          <h1><a href="index.php">SRM CENTRAL INSTRUMENTATION FACILITY (SCIF) PORTAL</a></h1>
         </li>
         <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
       </ul>
@@ -66,20 +66,9 @@ include 'php/config.php';
         <p>Below are your details in the database.</p>
       </div>
     </div>
-<<<<<<< HEAD
       <div class="row">
         <div class="small-12">
           
-=======
-    <form method="POST" action="update.php" style="margin-top:30px;">
-      <div class="row">
-        <div class="small-12">
-          <div class="row">
-            <div class="small-3 columns">
-              <label for="right-label" class="right inline">First Name</label>
-            </div>
-            <div class="small-8 columns end">
->>>>>>> 5892c1365de1302836ce68224511c59e4baab63b
               <?php
                 $result = $mysqli->query('SELECT * FROM users WHERE id='.$_SESSION['id']);
                 if($result === FALSE){
@@ -87,7 +76,6 @@ include 'php/config.php';
                 }
                 if($result) {
                   $obj = $result->fetch_object();
-<<<<<<< HEAD
                   echo'<div class="row"> <div class="small-3 columns">
               <label for="right-label" class="right inline">First Name</label>
             </div>
@@ -141,74 +129,11 @@ include 'php/config.php';
             </div>
             <div class="small-8 columns end">';
                   echo '<p>'.$obj->phno.'</p>';
-=======
-                  echo '<input type="text" id="right-label" placeholder="'. $obj->fname. '" name="fname">';
-                  echo '</div>';
-                  echo '</div>';
-                  echo '<div class="row">';
-                  echo '<div class="small-3 columns">';
-                  echo '<label for="right-label" class="right inline">Last Name</label>';
-                  echo '</div>';
-                  echo '<div class="small-8 columns end">';
-                  echo '<input type="text" id="right-label" placeholder="'. $obj->lname. '" name="lname">';
-                  echo '</div>';
-                  echo '</div>';
-                  echo '<div class="row">';
-                  echo '<div class="small-3 columns">';
-                  echo '<label for="right-label" class="right inline">Address</label>';
-                  echo '</div>';
-                  echo '<div class="small-8 columns end">';
-                  echo '<input type="text" id="right-label" placeholder="'. $obj->address. '" name="address">';
-                  echo '</div>';
-                  echo '</div>';
-                  echo '<div class="row">';
-                  echo '<div class="small-3 columns">';
-                  echo '<label for="right-label" class="right inline">City</label>';
-                  echo '</div>';
-                  echo '<div class="small-8 columns end">';
-                  echo '<input type="text" id="right-label" placeholder="'. $obj->city. '" name="city">';
-                  echo '</div>';
-                  echo '</div>';
-                  echo '<div class="row">';
-                  echo '<div class="small-3 columns">';
-                  echo '<label for="right-label" class="right inline">Pin Code</label>';
-                  echo '</div>';
-                  echo '<div class="small-8 columns end">';
-                  echo '<input type="text" id="right-label" placeholder="'. $obj->pin. '" name="pin">';
-                  echo '</div>';
-                  echo '</div>';
-                  echo '<div class="row">';
-                  echo '<div class="small-3 columns">';
-                  echo '<label for="right-label" class="right inline">Email</label>';
-                  echo '</div>';
-                  echo '<div class="small-8 columns end">';
-                  echo '<input type="email" id="right-label" placeholder="'. $obj->email. '" name="email">';
->>>>>>> 5892c1365de1302836ce68224511c59e4baab63b
                   echo '</div>';
                   echo '</div>';
                   
               }
-<<<<<<< HEAD
           ?>
-=======
-              echo '<div class="row">';
-              echo '<div class="small-3 columns">';
-              echo '<label for="right-label" class="right inline">Password</label>';
-              echo '</div>';
-              echo '<div class="small-8 columns end">';
-              echo '<input type="password" id="right-label" name="pwd">';
-              echo '</div>';
-              echo '</div>';
-          ?>
-          <div class="row">
-            <div class="small-4 columns">
-            </div>
-            <div class="small-8 columns">
-              <input type="submit" id="right-label" value="Update" style="background: #0078A0; border: none; color: #fff; font-family: 'Helvetica Neue', sans-serif; font-size: 1em; padding: 10px;">
-              <input type="reset" id="right-label" value="Reset" style="background: #0078A0; border: none; color: #fff; font-family: 'Helvetica Neue', sans-serif; font-size: 1em; padding: 10px;">
-            </div>
-          </div>
->>>>>>> 5892c1365de1302836ce68224511c59e4baab63b
         </div>
       </div>
     </form>

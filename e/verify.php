@@ -8,9 +8,10 @@ include 'php/config.php';
 $username = $_POST["username"];
 $password = $_POST["pwd"];
 $flag = 'true';
+$no=1;
 //$query = $mysqli->query("SELECT email, password from users");
 
-$result = $mysqli->query('SELECT id,email,pwd,fname,type from users order by id asc');
+$result = $mysqli->query('SELECT id,email,pwd,fname,type,ustatus from users order by id asc');
 
 if($result === FALSE){
   die(mysql_error());
@@ -18,14 +19,17 @@ if($result === FALSE){
 
 if($result){
   while($obj = $result->fetch_object()){
-    if($obj->email === $username && $obj->pwd === $password) {
+
+    if($obj->email === $username && $obj->pwd === $password && $obj->ustatus==$no) {
 
       $_SESSION['username'] = $username;
       $_SESSION['type'] = $obj->type;
       $_SESSION['id'] = $obj->id;
       $_SESSION['fname'] = $obj->fname;
+      $_SESSION['ustatus'] = $obj->ustatus;
       header("location:index.php");
-    } else {
+    } 
+    else {
 
         if($flag === 'true'){
           redirect();
@@ -36,7 +40,7 @@ if($result){
 }
 
 function redirect() {
-  echo '<h1>Invalid Login! Redirecting...</h1>';
-  header("Refresh: 3; url=index.php");
+  echo '<h1>Wrong Credentials or Account Verification still pending by the admin</h1>';
+  header("Refresh: 5; url=index.php");
 }
 ?>

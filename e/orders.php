@@ -1,5 +1,4 @@
 <?php
-
 //if (session_status() !== PHP_SESSION_ACTIVE) {session_start();}
 if(session_id() == '' || !isset($_SESSION)){session_start();}
 
@@ -8,7 +7,6 @@ if(!isset($_SESSION["username"])){
 }
 include 'php/config.php';
 ?>
-
 <!doctype html>
 <html class="no-js" lang="en">
   <head>
@@ -19,7 +17,6 @@ include 'php/config.php';
     <script src="js/vendor/modernizr.js"></script>
   </head>
   <body>
-
     <nav class="top-bar" data-topbar role="navigation">
       <ul class="title-area">
         <li class="name">
@@ -52,15 +49,10 @@ include 'php/config.php';
         </ul>
       </section>
     </nav>
-
-
-
-
     <div class="row" style="margin-top:10px;">
       <div class="large-12">
         <h3>My Bookings</h3>
         <hr>
-
         <?php
           $user = $_SESSION["username"];
           $q1=$mysqli->query("SELECT id from users WHERE email='".$user."'");
@@ -88,7 +80,6 @@ include 'php/config.php';
               //echo '<img src="images/products/sports_band.jpg">';
               echo '</div>';
               echo '<p><hr></p>';
-
             }
           }
           else
@@ -98,24 +89,13 @@ include 'php/config.php';
         ?>
       </div>
     </div>
-
-
-
-
     <div class="row" style="margin-top:10px;">
       <div class="small-12">
-
         <footer style="margin-top:10px;">
            <p style="text-align:center; font-size:0.8em;">&copy; SCIF</p>
         </footer>
-
       </div>
     </div>
-
-
-
-
-
     <script src="js/vendor/jquery.js"></script>
     <script src="js/foundation.min.js"></script>
     <script>

@@ -3,10 +3,31 @@ include ('php/session.php');
 include ('php/config.php');
 include ('php/head.php');
 ?>
+<style type="text/css">
+
+  .boxed {
+  border: 1px solid green ;
+}
+</style>
+  <style type="text/css">
+
+  table {
+    table-layout: auto;
+    border-collapse: collapse;
+    width: 100%;
+}
+table td {
+    border: 1px solid #ccc;
+}
+table .absorbing-column {
+    width: 100%;
+}
+
+</style>
     <div class="row" style="margin-top:30px;">
       <div class="small-12">
         <p>State-of-the-art facilities available for users.<br>
-        <table style="width:100%">
+        <table style="width:100%" class="absorbing-column">
   <tr>
     <th>Sr. No</th>
     <th>Name of the Instrument</th> 

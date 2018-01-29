@@ -16,7 +16,11 @@ include ('php/head.php');
           if($result){
             while($obj = $result->fetch_object()) {
               echo '<div class="large-4 columns" >';
+<<<<<<< HEAD
              
+=======
+              echo '<div class="boxed">';
+>>>>>>> 5892c1365de1302836ce68224511c59e4baab63b
               echo '<p><h3>'.$obj->product_name.'</h3></p>';//product name ye wala he, upar print hoga
               echo '<img src="images/products/'.$obj->product_img_name.'"/>';
               echo '<p><strong>Code</strong>: '.$obj->product_code.'</p>';
@@ -25,6 +29,7 @@ include ('php/head.php');
               echo '<p><strong>Booking Price</strong>: '.$currency.$obj->price.'</p>';
               echo '<p><a href="cart.php"><input type="submit" value="Book" style="clear:both; background: #0078A0; border: none; color: #fff; font-size: 1em; padding: 10px;" /></a></p>';
           
+              echo '</div>';
               echo '</div>';
               $i++;
             }

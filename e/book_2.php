@@ -50,39 +50,131 @@ include ('php/head.php');
         $slot=$_POST["slot"];
         $postfix; 
         $prefix;
-        if($slot>=1 and $slot<5)
+        $instrument_id=$_SESSION['instrument'];
+        if($instrument_id==1)
         {
-        $slot_start_time=$slot+6;
-        $slot_end_time=$slot+7;
-        $postfix=$prefix="AM";
-        }
-        else if($slot==5)
-        {
-        $slot_start_time=$slot+6;
-        $slot_end_time=$slot+7;
-        $prefix="AM";
-        $postfix="Noon";
+            if($slot==1)
+            {
+                $slot_start_time=''.($slot+8).':30';
+                $slot_end_time=''.($slot+9).':15';
+                $postfix=$prefix="AM";
+            }
+            else if ($slot==2) 
+            {
+                $slot_start_time=''.($slot+8).':15';
+                $slot_end_time=''.($slot+9).':00';
+                $postfix=$prefix="AM";
+            }
+            else if ($slot==3) 
+            {
+                $slot_start_time=''.($slot+8).':00';
+                $slot_end_time=''.($slot+8).':45';
+                $postfix=$prefix="AM";
+            }
+
+            else if($slot==4)
+            {
+                $slot_start_time=''.($slot+7).':45';
+                $slot_end_time=''.($slot+8).':30';
+                $prefix="AM";
+                $postfix="PM";
+            }
+
+            else if ($slot==5) 
+            {
+                $slot_start_time=''.($slot-4).':30';
+                $slot_end_time=''.($slot-3).':15';
+                $postfix=$prefix="PM";
+            }
+            else if($slot==6)
+            {
+                $slot_start_time=''.($slot-4).':15';
+                $slot_end_time=''.($slot-3).':00';
+                $postfix=$prefix="PM";
+            }
+            else if($slot==7)
+            {
+                $slot_start_time=''.($slot-4).':00';
+                $slot_end_time=''.($slot-3).':45';
+                $postfix=$prefix="PM";
+            }
+            else if($slot==8)
+            {
+                $slot_start_time=''.($slot-4).':45';
+                $slot_end_time=''.($slot-3).':30';
+                $postfix=$prefix="PM";
+            }
+            else if($slot==9)
+            {
+                $slot_start_time=''.($slot-4).':30';
+                $slot_end_time=''.($slot-3).':15';
+                $postfix=$prefix="PM";
+            }
+            else 
+            {
+                $postfix=$prefix="Invalid slot selection please try again!";
+            }
+
+            $slot_time="{$slot_start_time}{$prefix} - {$slot_end_time}{$postfix}";
         }
 
-        else if ($slot==6) 
+        else if($instrument_id!=1)
         {
-        $slot_start_time=$slot+6;
-        $slot_end_time=$slot-5;
-        $prefix="Noon";
-        $postfix="PM";
+            if($slot==1)
+            {
+                $slot_start_time=''.($slot+8).':30';
+                $slot_end_time=''.($slot+9).':30';
+                $postfix=$prefix="AM";
+            }
+            else if ($slot==2) 
+            {
+                $slot_start_time=''.($slot+8).':30';
+                $slot_end_time=''.($slot+9).':30';
+                $postfix=$prefix="AM";
+            }
+            else if ($slot==3) 
+            {
+                $slot_start_time=''.($slot+8).':30';
+                $slot_end_time=''.($slot+9).':30';
+                $prefix="AM";
+                $postfix="PM";
+            }
+
+            else if($slot==4)
+            {
+                $slot_start_time=''.($slot-3).':30';
+                $slot_end_time=''.($slot-2).':30';
+                $prefix="AM";
+                $postfix="PM";
+            }
+
+            else if ($slot==5) 
+            {
+                $slot_start_time=''.($slot-3).':30';
+                $slot_end_time=''.($slot-2).':15';
+                $postfix=$prefix="PM";
+            }
+            else if($slot==6)
+            {
+                $slot_start_time=''.($slot-3).':15';
+                $slot_end_time=''.($slot-2).':00';
+                $postfix=$prefix="PM";
+            }
+            else if($slot==7)
+            {
+                $slot_start_time=''.($slot-3).':00';
+                $slot_end_time=''.($slot-2).':45';
+                $postfix=$prefix="PM";
+            }
+            else 
+            {
+                $postfix=$prefix="Invalid slot selection please try again!";
+            }
+
+            $slot_time="{$slot_start_time}{$prefix} - {$slot_end_time}{$postfix}";
+
         }
-        else if($slot>6 and $slot<=16)
-        {
-        $slot_start_time=$slot-6;
-        $slot_end_time=$slot-5;
-        $postfix=$prefix="PM";
-        }
-        else 
-        {
-          $postfix=$prefix="Invalid slot selection please try again!";
-        }
-        $slot_time="$slot_start_time $prefix - $slot_end_time $postfix";
-        
+
         // End of code to display the slot section of the table.
 
 
@@ -126,7 +218,7 @@ include ('php/head.php');
         $table_name=$result_q5->table_name;
 
         // Converting the slot id to a valid string 
-        $slot_string=(string)($slot+6);
+        $slot_string=(string)($slot+8);
         $slot_c="slot_".$slot_string;
 
 
@@ -171,7 +263,8 @@ include ('php/head.php');
         echo $price;
         echo '<td colspan="1" align="left">';
         echo $order_date;
-        echo "<td colspan='1' align='left'>$slot_start_time $prefix - $slot_end_time $postfix</td>";
+        echo "<td colspan='1' align='left'>";
+        echo $slot_time;
         echo '<td colspan="1" align="left">';
         if($slot_blocked==1)
         {

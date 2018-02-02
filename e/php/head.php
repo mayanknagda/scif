@@ -10,11 +10,7 @@ echo '<!doctype html>
   <link rel="stylesheet" href="css/foundation.css" />
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script>
-  $( function() {
-    $( "#datepicker" ).datepicker({minDate: 0, maxDate: 7});
-  } );
-  </script>
+  
 <style type="text/css">
 
   .boxed {

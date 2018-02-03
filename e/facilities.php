@@ -30,19 +30,19 @@ table .absorbing-column {
         <table style="width:100%" class="absorbing-column">
   <tr>
     <th>Sr. No</th>
-    <th>Name of the Instrument</th> 
+    <th>Name of the Instrument</th>
     <th>Make/Model</th>
     <th>Available options</th>
   </tr>
   <tr>
     <td>1</td>
-    <td>Hi-Resolution Transmission Electron Microscope (HRTEM)</td> 
-    <td>JEOL, Japan</td>
-    <td>Imaging, SAED, EDAX</td>
+    <td>Hi-Resolution Transmission Electron Microscope (HRTEM)</td>
+    <td>JEOL Japan,JEM-2100 Plus</td>
+    <td>Imaging (TEM and HRTEM), SAED, EDXA, STEM</td>
   </tr>
   <tr>
     <td>2</td>
-    <td>Micro-Raman Spectrometer</td> 
+    <td>Micro-Raman Spectrometer</td>
     <td>HORIBA France, LABRAM HR Evolution</td>
     <td>Raman spectroscopy and Imaging<br>
 Lasers: <br>
@@ -52,11 +52,11 @@ and 325 nm
   </tr>
   <tr>
     <td>3</td>
-    <td>X-Ray Diffractometer (XRD)</td> 
-    <td>BRUKER</td>
+    <td>X-Ray Diffractometer (XRD)</td>
+    <td>BRUKER USA D8 Advance, Davinci</td>
     <td>Powder and Thin film geometry.
 
-<br>Small angle X-ray scattering
+<br>Small angle X-ray scattering (SAXS)
 </td>
   </tr>
 </table>
@@ -68,13 +68,7 @@ and 325 nm
 
       </div>
     </div>
-
-
-
-
-
-
-
+    
     <script src="js/vendor/jquery.js"></script>
     <script src="js/foundation.min.js"></script>
     <script>

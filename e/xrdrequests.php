@@ -3,20 +3,20 @@ if(session_id() == '' || !isset($_SESSION)){session_start();}
 include ('php/session.php');
 include ('php/config.php');
 
-/*
-if($_SESSION["type"] ="superuser" || $_SESSION["type"] ="xrdadmin") {
+if(($_SESSION["type"]!="superuser") && ($_SESSION["type"]!="xrdadmin") ) {
   header("location:index.php");
 }
 
+
 if($_SERVER['REQUEST_METHOD']=="POST" and isset($_POST['approve']))
 {$booya=$_POST['approve'];
-$result = $mysqli->query("UPDATE users SET ustatus=1 WHERE id=$booya");
+$result = $mysqli->query("UPDATE orders SET status=1 WHERE order_id=$booya");
 echo'accepted';}
 
 if($_SERVER['REQUEST_METHOD']=="POST" and isset($_POST['reject']))
 {$booya=$_POST['reject'];
-$result = $mysqli->query("DELETE FROM users WHERE id=$booya");
-echo 'rejected';}*/
+$result = $mysqli->query("DELETE FROM orders WHERE order_id=$booya");
+echo 'rejected';}
 
 ?>
 
@@ -111,7 +111,7 @@ table .absorbing-column {
             echo '</td>';
 
             echo '</tr>';
-            
+
             }
             echo '</div>';
             echo '</div>';

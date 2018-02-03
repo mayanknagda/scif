@@ -55,7 +55,7 @@ table .absorbing-column {
       <!-- Right Nav Section -->
       <ul class="right">
       <li><a href="registration.php">Registration Requests</a></li>
-        
+
         <?php
         if($_SESSION['type']=="superuser"){
             echo '<li><a href="hrtemrequests.php">HRTEM Requests</a></li>
@@ -99,9 +99,7 @@ table .absorbing-column {
             <button type=submit  name="reject" value='.$uid.' style="float:right;">Reject</button>
             </form>';
             echo '</td>';
-
             echo '</tr>';
-            
             }
             echo '</div>';
             echo '</div>';

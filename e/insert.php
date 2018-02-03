@@ -3,7 +3,6 @@
 // These must be at the top of your script, not inside a function
 
 //Load composer's autoloader
-
 include 'php/config.php';
 
 $fname = $_POST["fname"];
@@ -32,12 +31,12 @@ require 'vendor/autoload.php';
 $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
 try {
     //Server settings
-    $mail->SMTPDebug = 2;                                 // Enable verbose debug output
+    $mail->SMTPDebug = false;                                 // Enable verbose debug output
     $mail->isSMTP();                                      // Set mailer to use SMTP
     $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
     $mail->SMTPAuth = true;                               // Enable SMTP authentication
     $mail->Username = 'projecttestbot@gmail.com';                 // SMTP username
-    $mail->Password = 'sankalpsinha';                           // SMTP password
+    $mail->Password = 'SAN24ka1996lpprojectbot';                           // SMTP password
     $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
     $mail->Port = 587;                                    // TCP port to connect to
 
@@ -49,10 +48,10 @@ try {
     $mail->isHTML(true);                                  // Set email format to HTML
     $mail->Subject = 'Verification link - SICF Admin';
     $mail->Body    = '
- 
+
 Thanks for signing up!<br>
 Your SCIF account has been created, you can login with the registered credentials after you have activated your account by clicking the url below.<br>
- 
+
 Please click this link to activate your account:<br>
 http://scif.epizy.com/verify-email.php?email='.$email.'&hash='.$hash.''; // Our message above including the link
     //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';

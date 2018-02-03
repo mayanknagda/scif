@@ -1,5 +1,5 @@
 <?php
-$currency = 'Rs';
+$currency = 'Rs: ';
 $db_username = 'root';
 $db_password = '';
 $db_name = 'scif';

@@ -1,13 +1,10 @@
 <?php
 include ('php/session.php');
 include ('php/config.php');
-/*if(!isset($_SESSION["username"])) {
-  header("location:index.php");
-}
 
 if($_SESSION["type"]!="superuser") {
   header("location:index.php");
-}*/
+}
 
 ?>
 
@@ -85,7 +82,7 @@ table .absorbing-column {
             echo '<td>'.$obj->slot_time.'</td>';
             echo '<td>'.$obj->product_name.'</td>';
             echo '</tr>';
-            
+
             }
             echo '</div>';
             echo '</div>';

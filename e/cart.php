@@ -3,13 +3,14 @@ include ('php/session.php');
 include ('php/login_check.php');
 include ('php/config.php');
 include ('php/head.php');
+if(!isset($_SESSION["username"])) {header("location:index.php");}
 ?>
     <div class="row" style="margin-top:10px;">
       <div class="large-12">
         <p><h3>Book Instrument</h3></p>
         <?php
         $inst_id=$_POST['inst_id'];
-            
+
 
             echo '<table>';
             echo '<tr>';
@@ -27,7 +28,7 @@ include ('php/head.php');
             {
               echo '<script>
                 $( function() {
-                $( "#datepicker" ).datepicker({minDate: 0, maxDate: 14}); 
+                $( "#datepicker" ).datepicker({minDate: 0, maxDate: 14});
                    });
                 </script>';
             }
@@ -60,7 +61,7 @@ include ('php/head.php');
 
       </div>
     </div>
- 
+
 </body>
 </html>
 

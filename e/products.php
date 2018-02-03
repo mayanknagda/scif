@@ -18,7 +18,7 @@ include ('php/head.php');
             while($obj = $result->fetch_object()) {
               echo '<div class="large-4 columns" >';
               echo '<p><h3>'.$obj->product_name.'</h3></p>';//product name ye wala he, upar print hoga
-              echo '<img src="images/products/'.$obj->product_img_name.'"/>';
+              echo '<img src="images/'.$obj->product_img_name.'"/>';
               echo '<p><strong>Code</strong>: '.$obj->product_code.'</p>';
               echo '<p><strong>Description</strong>: '.$obj->product_desc.'</p>';
               echo '<p><strong>Person Incharge</strong>: '.$obj->pi.'</p>';

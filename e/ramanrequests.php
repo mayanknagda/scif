@@ -2,13 +2,22 @@
 if(session_id() == '' || !isset($_SESSION)){session_start();}
 include ('php/session.php');
 include ('php/config.php');
-/*if(!isset($_SESSION["username"])) {
+
+if(($_SESSION["type"]!="superuser") && ($_SESSION["type"]!="ramanadmin") ) {
   header("location:index.php");
 }
 
-if($_SESSION["type"]!="superuser") {
-  header("location:index.php");
-}*/
+
+
+if($_SERVER['REQUEST_METHOD']=="POST" and isset($_POST['approve']))
+{$booya=$_POST['approve'];
+$result = $mysqli->query("UPDATE orders SET status=1 WHERE order_id=$booya");
+echo'accepted';}
+
+if($_SERVER['REQUEST_METHOD']=="POST" and isset($_POST['reject']))
+{$booya=$_POST['reject'];
+$result = $mysqli->query("DELETE FROM orders WHERE order_id=$booya");
+echo 'rejected';}
 
 ?>
 
@@ -83,6 +92,7 @@ table .absorbing-column {
 
             echo '</tr>';
             while($obj = $result->fetch_object()) {
+              $uid=$obj->order_id;
             echo '<tr>';
             echo '<td>'.$obj->order_id.'</td>';
            echo '<td>'.$obj->fname.' '.$obj->lname.'</td>';
@@ -93,16 +103,16 @@ table .absorbing-column {
             echo '<td>'.$obj->date_of_order.'</td>';
             echo '<td>'.$obj->slot_time.'</td>';
             echo '<td>';
-            echo '<form action "approve.php">
-            <button type=submit style="float:right;">Approve</button>
+            echo '<form action ="ramanrequests.php" method=POST>
+            <button type=submit name="approve" value='.$uid.' style="float:right;">Approve</button>
             </form>';
-            echo '<form action "reject.php">
-            <button type=submit style="float:right;">Reject</button>
+            echo '<form action="ramanrequests.php" method=POST>
+            <button type=submit  name="reject" value='.$uid.' style="float:right;">Reject</button>
             </form>';
             echo '</td>';
 
             echo '</tr>';
-            
+
             }
             echo '</div>';
             echo '</div>';

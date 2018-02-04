@@ -7,16 +7,28 @@ if(($_SESSION["type"]!="superuser") && ($_SESSION["type"]!="hrtemadmin") ) {
   header("location:index.php");
 }
 
-
 if($_SERVER['REQUEST_METHOD']=="POST" and isset($_POST['approve']))
-{$booya=$_POST['approve'];
-$result = $mysqli->query("UPDATE orders SET status=1 WHERE order_id=$booya");
-echo'accepted';}
+{
+  $booya=$_POST['approve'];
+  $result = $mysqli->query("UPDATE orders SET status=1 WHERE order_id=$booya");
+  if($result)
+  {
+    echo'Request Accepted';
+  }
+}
 
 if($_SERVER['REQUEST_METHOD']=="POST" and isset($_POST['reject']))
-{$booya=$_POST['reject'];
-$result = $mysqli->query("DELETE FROM orders WHERE order_id=$booya");
-echo 'rejected';}
+{
+  $booya=$_POST['reject'];
+  $result = $mysqli->query("DELETE FROM orders WHERE order_id=$booya");
+  $del=$mysqli->query("DELETE FROM hrtem_order_details WHERE order_id=$booya");
+
+if($result && $del)
+{
+  echo 'Request Rejected';
+}
+else echo'SQL Error!';
+}
 
 ?>
 

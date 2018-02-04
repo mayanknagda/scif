@@ -429,7 +429,7 @@ try {
         if($sq_result->wavelength==325)
         {
         echo '<tr>';
-        echo '<td colspan="1" align="left">Nature of Sam:</td>';
+        echo '<td colspan="1" align="left">Justification for 325nm wavelength:</td>';
         echo '<td colspan="1" align="left">'.$sq_result->wavelength_justi.'</td>';
         echo '</tr>';
         }
@@ -488,6 +488,7 @@ try {
 
     // END OF THE BOTTOM TABLE
     maill('Thanks for booking!<br>Please wait while we confirm your booking. You will get notified soon once your booking is confirmed');
+    echo '<div></div></div></div><footer><p align="center">This is a machine generated recipt. You will recive a confirmation email from the Admin in 48hrs. For any clarifications please contact the Admin at: admin.hrtem@ktr.srmuniv.ac.in</p></footer>';
 
     }
     else
@@ -498,8 +499,6 @@ try {
       maill("You've already booked today, please try again later");
     }
     ?>
-      </div>
-    </div>
   </body>
   </html>
 

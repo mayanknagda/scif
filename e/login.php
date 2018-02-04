@@ -32,7 +32,7 @@ if(isset($_POST['submit']))
               <label for="right-label" class="right inline">Email</label>
             </div>
             <div class="small-8 columns">
-              <input type="email" id="right-label" placeholder="Your Email" name="username">
+              <input type="email" required="true" id="right-label" placeholder="Your Email" name="username">
             </div>
           </div>
           <div class="row">
@@ -40,7 +40,7 @@ if(isset($_POST['submit']))
               <label for="right-label" class="right inline">Password</label>
             </div>
             <div class="small-8 columns">
-              <input type="password" id="right-label" name="pwd" placeholder="Your Password">
+              <input type="password" required="true" id="right-label" name="pwd" placeholder="Your Password">
             </div>
           </div>
            </div>

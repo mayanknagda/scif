@@ -45,6 +45,7 @@ else
     <script src="js/vendor/modernizr.js"></script>
     <style type="text/css">
      table {
+       margin-bottom: 0px;
     table-layout: auto;
     border-collapse: collapse;
     width: 100%;
@@ -92,6 +93,13 @@ table .absorbing-column {
         $name="MRS";
           $result = $mysqli->query("SELECT * FROM users cross join orders WHERE user_id=id AND status=0 AND product_name='$name'");
           if($result) {
+           
+            while($obj = $result->fetch_object()) {
+              $uid=$obj->order_id;
+              $lq=$mysqli->query("SELECT * FROM mrs_order_details WHERE order_id=$uid");
+              $lq_result=$lq->fetch_object();
+
+            echo 'Order Details:';
             echo '<table class="absorbing-column">';
             echo '<tr>';
             echo '<th>Booking ID</th>';
@@ -105,8 +113,6 @@ table .absorbing-column {
             echo '<th>Approval</th>';
 
             echo '</tr>';
-            while($obj = $result->fetch_object()) {
-              $uid=$obj->order_id;
             echo '<tr>';
             echo '<td>'.$obj->order_id.'</td>';
            echo '<td>'.$obj->fname.' '.$obj->lname.'</td>';
@@ -126,6 +132,26 @@ table .absorbing-column {
             echo '</td>';
 
             echo '</tr>';
+            echo '</table>';
+
+            echo '<table>';
+            echo '<tr>';
+            echo '<th>Nature of Sample</th>';
+            echo '<th>Wavelength</th>';
+            echo '<th>Wavelength Justification</th>';
+            echo '<th>Scan range From</th>';
+            echo '<th>Scan Range To</th>';
+            echo '<th>Details</th>';  
+            echo '</tr>';
+            echo '<td>'.$lq_result->nature_of_sample.'</td>';
+            echo '<td>'.$lq_result->wavelength.'</td>';
+            echo '<td>'.$lq_result->wavelength_justi.'</td>';
+            echo '<td>'.$lq_result->scan_range_from.'</td>';
+            echo '<td>'.$lq_result->scan_range_to.'</td>';
+            echo '<td>'.$lq_result->details.'</td>';
+            echo '</tr>';
+            echo '</table>';
+
 
             }
             echo '</div>';

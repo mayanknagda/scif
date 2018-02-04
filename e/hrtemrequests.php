@@ -42,6 +42,7 @@ else echo'SQL Error!';
     <script src="js/vendor/modernizr.js"></script>
     <style type="text/css">
      table {
+      margin-bottom: 0px;
     table-layout: auto;
     border-collapse: collapse;
     width: 100%;
@@ -89,6 +90,13 @@ table .absorbing-column {
         $name="HRTEM";
           $result = $mysqli->query("SELECT * FROM users cross join orders WHERE user_id=id AND status=0 AND product_name='$name'");
           if($result) {
+           
+            while($obj = $result->fetch_object()) {
+              $uid=$obj->order_id;
+              $lq=$mysqli->query("SELECT * FROM hrtem_order_details WHERE order_id=$uid");
+              $lq_result=$lq->fetch_object();
+            // Start of first table
+            echo 'Order Details:';
             echo '<table class="absorbing-column">';
             echo '<tr>';
             echo '<th>Booking ID</th>';
@@ -100,17 +108,15 @@ table .absorbing-column {
             echo '<th>Date of Usage</th>';
             echo '<th>Slot</th>';
             echo '<th>Approval</th>';
-
             echo '</tr>';
-            while($obj = $result->fetch_object()) {
-              $uid=$obj->order_id;
+            
             echo '<tr>';
             echo '<td>'.$obj->order_id.'</td>';
-           echo '<td>'.$obj->fname.' '.$obj->lname.'</td>';
-           echo '<td>'.$obj->institute.'</td>';
-           echo '<td>'.$obj->iid.'</td>';
-           echo '<td>'.$obj->phno.'</td>';
-           echo '<td>'.$obj->email.'</td>';
+            echo '<td>'.$obj->fname.' '.$obj->lname.'</td>';
+            echo '<td>'.$obj->institute.'</td>';
+            echo '<td>'.$obj->iid.'</td>';
+            echo '<td>'.$obj->phno.'</td>';
+            echo '<td>'.$obj->email.'</td>';
             echo '<td>'.$obj->date_of_order.'</td>';
             echo '<td>'.$obj->slot_time.'</td>';
             echo '<td>';
@@ -123,6 +129,25 @@ table .absorbing-column {
             echo '</td>';
 
             echo '</tr>';
+            echo '</table>';
+            // End of first table
+
+            // Start of second table 
+            echo '<table>';
+            echo '<tr>';
+            echo '<th>Nature of Sample</th>';
+            echo '<th>Magnetic</th>';
+            echo '<th>Magnetic Nature Details</th>';
+            echo '<th>Measurement</th>';
+            echo '<th>Details</th>';
+            echo '</tr>';
+            echo '<td>'.$lq_result->nature_of_sample.'</td>';
+            echo '<td>'.$lq_result->magnetic.'</td>';
+            echo '<td>'.$lq_result->magnetic_details.'</td>';
+            echo '<td>'.$lq_result->measurement.'</td>';
+            echo '<td>'.$lq_result->details.'</td>';
+            echo '</tr>';
+            echo '</table>';
 
             }
             echo '</div>';

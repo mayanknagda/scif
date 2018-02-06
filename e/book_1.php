@@ -58,29 +58,29 @@ if(!isset($_SESSION["username"])) {header("location:index.php");}
                  {
                   $slots=$q4->fetch_object();
                   echo '<select name="slot">';
-                  if($slots->slot_7!=0 && $slots->slot_7<1001 && $instrument_id==1) {echo' <option value="'.'1'.'">'."9:30AM - 10:15AM".'</option>';}
-                  else if($slots->slot_7!=0 && $slots->slot_7<1001 && $instrument_id!=1){echo' <option value="'.'1'.'">'."9:30AM - 10:30AM".'</option>';}
+                  if($slots->slot_9!=0 && $slots->slot_9<1001 && $instrument_id==1) {echo' <option value="'.'1'.'">'."9:30AM - 10:15AM".'</option>';}
+                  else if($slots->slot_9!=0 && $slots->slot_9<1001 && $instrument_id!=1){echo' <option value="'.'1'.'">'."9:30AM - 10:30AM".'</option>';}
 
-                  if ($slots->slot_8!=0 && $slots->slot_8<1001 && $instrument_id==1) {echo' <option value="'.'2'.'">'."10:15AM - 11AM".'</option>';}
-                  else if($slots->slot_7!=0 && $slots->slot_7<1001 && $instrument_id!=1){echo' <option value="'.'2'.'">'."10:30AM - 11:30AM".'</option>';}
+                  if ($slots->slot_10!=0 && $slots->slot_10<1001 && $instrument_id==1) {echo' <option value="'.'2'.'">'."10:15AM - 11AM".'</option>';}
+                  else if($slots->slot_10!=0 && $slots->slot_10<1001 && $instrument_id!=1){echo' <option value="'.'2'.'">'."10:30AM - 11:30AM".'</option>';}
 
-                  if ($slots->slot_9!=0 && $slots->slot_9<1001 && $instrument_id==1) {echo' <option value="'.'3'.'">'."11AM - 11:45AM".'</option>';}
-                  else if($slots->slot_7!=0 && $slots->slot_7<1001 && $instrument_id!=1){echo' <option value="'.'3'.'">'."11:30AM - 12:30AM".'</option>';}
+                  if ($slots->slot_11!=0 && $slots->slot_11<1001 && $instrument_id==1) {echo' <option value="'.'3'.'">'."11AM - 11:45AM".'</option>';}
+                  else if($slots->slot_11!=0 && $slots->slot_11<1001 && $instrument_id!=1){echo' <option value="'.'3'.'">'."11:30AM - 12:30AM".'</option>';}
 
-                  if ($slots->slot_10!=0 && $slots->slot_10<1001 && $instrument_id==1) {echo' <option value="'.'4'.'">'."11:45AM - 12:30PM".'</option>';}
-                  else if($slots->slot_7!=0 && $slots->slot_7<1001 && $instrument_id!=1){echo' <option value="'.'4'.'">'."1:30PM - 2:30PM".'</option>';}
+                  if ($slots->slot_12!=0 && $slots->slot_12<1001 && $instrument_id==1) {echo' <option value="'.'4'.'">'."11:45AM - 12:30PM".'</option>';}
+                  else if($slots->slot_12!=0 && $slots->slot_12<1001 && $instrument_id!=1){echo' <option value="'.'4'.'">'."1:30PM - 2:30PM".'</option>';}
 
-                  if ($slots->slot_11!=0 && $slots->slot_11<1001 && $instrument_id==1) {echo' <option value="'.'5'.'">'."1:30PM - 2:15PM".'</option>';}
-                  else if($slots->slot_7!=0 && $slots->slot_7<1001 && $instrument_id!=1){echo' <option value="'.'5'.'">'."2:30PM - 3:30PM".'</option>';}
+                  if ($slots->slot_13!=0 && $slots->slot_13<1001 && $instrument_id==1) {echo' <option value="'.'5'.'">'."1:30PM - 2:15PM".'</option>';}
+                  else if($slots->slot_13!=0 && $slots->slot_13<1001 && $instrument_id!=1){echo' <option value="'.'5'.'">'."2:30PM - 3:30PM".'</option>';}
 
-                  if ($slots->slot_12!=0 && $slots->slot_12<1001 && $instrument_id==1) {echo' <option value="'.'6'.'">'."2:15PM - 3PM".'</option>';}
-                  else if($slots->slot_7!=0 && $slots->slot_7<1001 && $instrument_id!=1){echo' <option value="'.'6'.'">'."3:30PM - 4:30PM".'</option>';}
+                  if ($slots->slot_14!=0 && $slots->slot_14<1001 && $instrument_id==1) {echo' <option value="'.'6'.'">'."2:15PM - 3PM".'</option>';}
+                  else if($slots->slot_14!=0 && $slots->slot_14<1001 && $instrument_id!=1){echo' <option value="'.'6'.'">'."3:30PM - 4:30PM".'</option>';}
 
-                  if ($slots->slot_13!=0 && $slots->slot_13<1001 && $instrument_id==1) {echo' <option value="'.'7'.'">'."3PM - 3:45PM".'</option>';}
-                  else if($slots->slot_7!=0 && $slots->slot_7<1001 && $instrument_id!=1){echo' <option value="'.'7'.'">'."4:30AM - 5:30AM".'</option>';}
+                  if ($slots->slot_15!=0 && $slots->slot_15<1001 && $instrument_id==1) {echo' <option value="'.'7'.'">'."3PM - 3:45PM".'</option>';}
+                  else if($slots->slot_15!=0 && $slots->slot_15<1001 && $instrument_id!=1){echo' <option value="'.'7'.'">'."4:30AM - 5:30AM".'</option>';}
 
-                  if ($slots->slot_14!=0 && $slots->slot_14<1001 && $instrument_id==1) {echo' <option value="'.'8'.'">'."3:45PM - 4:30PM".'</option>';}
-                  if ($slots->slot_15!=0 && $slots->slot_15<1001 && $instrument_id==1) {echo' <option value="'.'9'.'">'."4:30PM - 5:15PM".'</option>';}
+                  if ($slots->slot_16!=0 && $slots->slot_16<1001 && $instrument_id==1) {echo' <option value="'.'8'.'">'."3:45PM - 4:30PM".'</option>';}
+                  if ($slots->slot_17!=0 && $slots->slot_17<1001 && $instrument_id==1) {echo' <option value="'.'9'.'">'."4:30PM - 5:15PM".'</option>';}
                   // UNCOMMENT THESE SLOTS IF NEEDED.
                   // if ($slots->slot_16!=0 && $slots->slot_16<1001) {echo' <option value="'.'10'.'">'."4PM - 5PM".'</option>';}
                   // if ($slots->slot_17!=0 && $slots->slot_17<1001) {echo' <option value="'.'11'.'">'."5PM - 6PM".'</option>';}

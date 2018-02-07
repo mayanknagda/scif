@@ -9,7 +9,17 @@ include ('php/head.php');
         <p align="center" style="color:red"><b>SCIF:</b><i>SRM Centreal Instrumentation Facility</i></p>
         <p>About SCIF<br>SCIF portal provides consolidated state-of-the-art research facilities available in SRMIST and allows users to directly reserve time for use.
         </p>
+<p>
+<?php
 
+$q = $mysqli->query("SELECT * FROM announcement");
+$result=$q->fetch_object();
+
+echo '<marquee style="color:blue">'.$result->announce.'</marquee>'
+
+?>
+
+</p>
 
         <div class="slideshow-container">
 

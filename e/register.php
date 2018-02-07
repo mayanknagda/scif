@@ -33,7 +33,7 @@ echo '<script type="text/javascript">
     else{
       return true;
     }
-} 
+}
     </script>';
 ?>
     <form name="register" method="POST" action="insert.php" onsubmit="return validateForm()" style="margin-top:30px;">
@@ -111,19 +111,20 @@ echo '<script type="text/javascript">
             <div class="small-8 columns">
               <input id="right-label" type="password" name="rpwd" required>
             </div>
-
+ <div>
              <div class="row">
+
             <div class="small-4 columns">
-            <div class="g-recaptcha" data-sitekey="6LcQwEIUAAAAAJUA7Kv08cOmHM4asACzngfi8mhB" data-callback="enableBtn"></div>
-          </div>
-            <div class="small-8 columns">
-              <input type="submit" name="submit" id="button1" value="Register" disabled="true" style="background: #0078A0; border: none; color: #fff; font-family: 'Helvetica Neue', sans-serif; font-size: 1em; padding: 10px;">
+              <input type="submit" name="submit" id="button1" value="Register" style="background: #0078A0; border: none; color: #fff; font-family: 'Helvetica Neue', sans-serif; font-size: 1em; padding: 10px;">
+<!--
               <input type="reset" id="right-label" value="Reset" style="background: #0078A0; border: none; color: #fff; font-family: 'Helvetica Neue', sans-serif; font-size: 1em; padding: 10px;">
-           
-            
+-->
+
             </div>
           </div>
+          </div>
         </div>
+      </div>
 
     </form>
     <div class="row" style="margin-top:10px;">

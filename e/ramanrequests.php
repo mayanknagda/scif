@@ -26,7 +26,7 @@ $result = $mysqli->query("DELETE FROM orders WHERE order_id=$booya");
 $del=$mysqli->query("DELETE FROM mrs_order_details WHERE order_id=$booya");
 if($result && $del)
 {
- echo 'Request Rejected'; 
+ echo 'Request Rejected';
 }
 else
 {
@@ -73,6 +73,7 @@ table .absorbing-column {
       <?php
         if($_SESSION['type']=="superuser"){
             echo '<li><a href="registration.php">Registration Requests</a></li>
+            <li><a href="analysis.php">Analysis</a></li>
             <li><a href="hrtemrequests.php">HRTEM Requests</a></li>';
           }
           ?>
@@ -93,7 +94,7 @@ table .absorbing-column {
         $name="MRS";
           $result = $mysqli->query("SELECT * FROM users cross join orders WHERE user_id=id AND status=0 AND product_name='$name'");
           if($result) {
-           
+
             while($obj = $result->fetch_object()) {
               $uid=$obj->order_id;
               $lq=$mysqli->query("SELECT * FROM mrs_order_details WHERE order_id=$uid");
@@ -141,7 +142,7 @@ table .absorbing-column {
             echo '<th>Wavelength Justification</th>';
             echo '<th>Scan range From</th>';
             echo '<th>Scan Range To</th>';
-            echo '<th>Details</th>';  
+            echo '<th>Details</th>';
             echo '</tr>';
             echo '<td>'.$lq_result->nature_of_sample.'</td>';
             echo '<td>'.$lq_result->wavelength.'</td>';

@@ -3,7 +3,7 @@ include ('php/session.php');
 include ('php/login_check.php');
 include ('php/config.php');
 include ('php/head.php');
-if(!isset($_SESSION["username"])) {header("location:index.php");}
+if(!isset($_SESSION["username"])) { header("location:login.php");}
 ?>
     <div class="row" style="margin-top:10px;">
       <div class="large-12">

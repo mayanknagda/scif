@@ -75,6 +75,7 @@ table .absorbing-column {
       <?php
         if($_SESSION['type']=="superuser"){
             echo '<li><a href="registration.php">Registration Requests</a></li>
+            <li><a href="analysis.php">Analysis</a></li>
             <li><a href="hrtemrequests.php">HRTEM Requests</a></li>
             <li><a href="ramanrequests.php">MRS Requests</a></li>';
           }
@@ -95,7 +96,7 @@ table .absorbing-column {
         $name="XRD";
           $result = $mysqli->query("SELECT * FROM users cross join orders WHERE user_id=id AND status=0 AND product_name='$name'");
           if($result) {
-            
+
             while($obj = $result->fetch_object()) {
               echo'<br>';
               $uid=$obj->order_id;

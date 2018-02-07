@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
+-- version 4.7.6
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 03, 2018 at 12:55 PM
--- Server version: 10.1.30-MariaDB
--- PHP Version: 7.2.1
+-- Generation Time: Feb 07, 2018 at 03:24 AM
+-- Server version: 10.1.29-MariaDB
+-- PHP Version: 7.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,6 +21,23 @@ SET time_zone = "+00:00";
 --
 -- Database: `scif`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `announcement`
+--
+
+CREATE TABLE `announcement` (
+  `announce` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `announcement`
+--
+
+INSERT INTO `announcement` (`announce`) VALUES
+('.Announcements will appear here.');
 
 -- --------------------------------------------------------
 
@@ -101,7 +118,7 @@ CREATE TABLE `products` (
   `product_name` varchar(60) NOT NULL,
   `product_desc` text NOT NULL,
   `product_img_name` varchar(60) NOT NULL,
-  `price` decimal(10,2) NOT NULL,
+  `price` text NOT NULL,
   `pi` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -110,9 +127,9 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `product_code`, `product_name`, `product_desc`, `product_img_name`, `price`, `pi`) VALUES
-(1, 'SCIF1', 'HRTEM', 'Hi-Resolution Transmission Electron Microscope.\r\nMade By: JEOL, Japan', 'machine.jpg', '5000.00', 'sir 1'),
-(2, 'SCIF2', 'MRS', 'Micro-Raman Spectrometer\r\nMade By: HORIBA France, LABRAM HR Evolution', 'machine.jpg', '200.00', 'sir 2'),
-(3, 'SCIF3', 'XRD', 'X-Ray Diffractometer (XRD)\r\nMade By: BRUKER', 'machine.jpg', '1000.00', 'sir 3');
+(1, 'SCIF1', 'HRTEM', 'Hi-Resolution Transmission Electron Microscope.\r\nMade By: JEOL, Japan', 'hrtem.jpg', '300.00', 'admin.hrtem@ktr.srmuniv.ac.in'),
+(2, 'SCIF2', 'MRS', 'Micro-Raman Spectrometer\r\nMade By: HORIBA France, LABRAM HR Evolution', 'raman.jpg', 'Free', 'admin.microraman@ktr.srmuniv.ac.in '),
+(3, 'SCIF3', 'XRD', 'X-Ray Diffractometer (XRD)\r\nMade By: BRUKER', 'xrd.jpg', 'Free', 'admin.xrd@ktr.srmuniv.ac.in ');
 
 -- --------------------------------------------------------
 
@@ -222,17 +239,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `fname`, `lname`, `institute`, `iid`, `address`, `email`, `pwd`, `phno`, `type`, `hash`, `active`, `ustatus`) VALUES
-(1, 'Super', 'User', 'SRM', '1', 'SRM Institutes', 'superuser@scif.com', 'super', '1', 'superuser', NULL, 1, 1),
-(2, 'HRTEM', 'Admin', 'SRM', '1', 'SRM Institutes', 'hrtemadmin@scif.com', 'hrtem', '1', 'hrtemadmin', NULL, 1, 1),
-(3, 'Raman', 'Admin', 'SRM', '1', 'SRM Institutes', 'ramanadmin@scif.com', 'raman', '1', 'ramanadmin', NULL, 1, 1),
-(4, 'HRTEM', 'Admin', 'SRM', '1', 'SRM Institutes', 'xrdadmin@scif.com', 'xrd', '1', 'xrdadmin', NULL, 1, 1),
-(5, 'Aam', 'Aadmi', 'SRM', '111', 'Green Pearl', 'aamaadmi@scif.com', 'aa', '2', 'user', NULL, 1, 1),
-(6, 'mayank', 'nagda', 'srm', '313', 'a', 'nagdamayank05@gmail.com', 'a', '123', 'user', '55743cc0393b1cb4b8b37d09ae48d097', 0, 1),
-(7, 'Sankalp', 'Sinha', 'SRM University', 'RA1511003010379', 'Room No: 328, Pierre Fauchard, SRM University Kattankulathur', 'sankalpsinha.cmos@gmail.com', '1', '8838464151', 'user', 'd709f38ef758b5066ef31b18039b8ce5', 0, 1),
-(8, 'Sankalp', 'Sinha', 'SRM Univsersity', 'RA1511003010379', 'A308', 'sankalponfire@gmail.com', '1', '9999999999', 'user', '32bb90e8976aab5298d5da10fe66f21d', 1, 1),
-(9, 'A', 'Arora', 'Srm', '677', 'Gahbensn', 'aditi18061998@gmail.com', '1234', '672-7282-388', 'user', '16c222aa19898e5058938167c8ab6c57', 1, 1),
-(10, 'Sparsh ', 'Heda', 'SRMIST', 'IDONTKNOW', 'WHY', 'hedasp@gmail.com', 'pppp', '8503810920', 'user', 'e5f6ad6ce374177eef023bf5d0c018b6', 0, 1),
-(11, 'Venkat Jayanth', 'A', 'SRM University', 'avjayanth@gmail.com', 'xyz', 'avjayanth@gmail.com', 'jayanth1996', '7598263130', 'user', '9f61408e3afb633e50cdf1b20de6f466', 1, 1);
+(1, 'Super', 'User', 'SRM', '1', 'SRM IST', 'admin.scif@ktr.srmuniv.ac.in', 'scifsuperuser', '', 'superuser', NULL, 1, 1),
+(2, 'Hrtem', 'Admin', 'SRM', '2', 'SRM IST', 'admin.hrtem@ktr.srmuniv.ac.in', 'hrtemadmin', '1', 'hrtemadmin', NULL, 1, 1),
+(3, 'Raman', 'Admin', 'SRM', '3', 'SRM IST', 'admin.microraman@ktr.srmuniv.ac.in', 'ramanadmin', '1', 'ramanadmin', NULL, 1, 1),
+(4, 'XRD', 'Admin', 'SRM', '4', 'SRM IST', 'admin.xrd@ktr.srmuniv.ac.in', 'xrdadmin', '1', 'xrdadmin', NULL, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -328,7 +338,7 @@ ALTER TABLE `slot_xrd`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

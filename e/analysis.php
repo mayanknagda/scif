@@ -6,6 +6,24 @@ include ('php/config.php');
 if($_SESSION["type"]!="superuser") {
   header("location:index.php");
 }
+<<<<<<< HEAD
+
+if($_SERVER['REQUEST_METHOD']=="POST" and isset($_POST['announcement']))
+{$booya=$_POST['announcement'];
+  
+$result = $mysqli->query("UPDATE announcement SET announce = '.$booya.'");
+//"INSERT INTO announcement (announce) VALUES ('.$booya.')"
+if($result)
+{
+  echo'Announcement Updated';
+}
+else
+{
+  echo 'SQL Error!';
+}
+}
+=======
+>>>>>>> 4ce82d73039e4591901f3ba6c39a7470ee7ab727
 ?>
 
 <!doctype html>
@@ -68,10 +86,17 @@ table .absorbing-column {
       $q2=$mysqli->query("SELECT * FROM orders WHERE product_name='HRTEM'");
       $q3=$mysqli->query("SELECT * FROM orders WHERE product_name='XRD'");
       $q4=$mysqli->query("SELECT * FROM orders WHERE product_name='MRS'");
+<<<<<<< HEAD
+
+// Code for the Total Bar in Plotly
+
+  $date1=array(); // X-Axis Array for total
+=======
       
 // Code for the Total Bar in Plotly
 
   $date1=array(); // X-Axis Array for total 
+>>>>>>> 4ce82d73039e4591901f3ba6c39a7470ee7ab727
   $count1=array(); // Y-Axis Array for total
   $i;
   $i1=0;
@@ -89,13 +114,21 @@ table .absorbing-column {
   }
 
   // echo 'Total Info:<br>';
+<<<<<<< HEAD
+  // for($i=0;$i<count($date1);$i++)
+=======
   // for($i=0;$i<count($date1);$i++) 
+>>>>>>> 4ce82d73039e4591901f3ba6c39a7470ee7ab727
   // {
   //   echo $date1[$i], '<br>';
   //   echo $count1[$i], '<br>';
   // }
 // END OF CODE FOR Total
+<<<<<<< HEAD
+
+=======
   
+>>>>>>> 4ce82d73039e4591901f3ba6c39a7470ee7ab727
 // Code for the HRTEM Bar in Plotly
 
   $date2=array();
@@ -257,5 +290,15 @@ var layout = {
 Plotly.newPlot('myDiv', data, layout);
   </script>
     </div>
+<<<<<<< HEAD
+    <div class="row">
+      <form action="analysis.php" id="form1" method=POST>
+      <input type="text" name="announcement"><br>
+      <form>
+
+<button type="submit" form="form1" value="Submit">Make Announcement</button>
+    </div>
+=======
+>>>>>>> 4ce82d73039e4591901f3ba6c39a7470ee7ab727
   </body>
 </html>

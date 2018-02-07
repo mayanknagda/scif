@@ -8,9 +8,11 @@ if(!isset($_SESSION["username"])){
 include 'php/config.php';
 include 'php/head.php';
 ?>
+
     <div class="row" style="margin-top:10px;">
       <div class="large-12">
         <h3>My Bookings</h3>
+        <input type="button" value="Print this page" onClick="window.print()">
         <hr>
         <?php
           $user = $_SESSION["username"];
@@ -32,6 +34,48 @@ include 'php/head.php';
               echo '<th>Slot Time</th>';
               // Table change as product name changes
               if($obj->product_name=='HRTEM')
+<<<<<<< HEAD
+              {
+                $q1=$mysqli->query("SELECT * FROM hrtem_order_details WHERE order_id=$oi");
+                $q1_result=$q1->fetch_object();
+                echo '<th>Nature of Sample</th>';
+                echo '<th>Magnetic</th>';
+                echo '<th>Magnetic Details</th>';
+                echo '<th>Measurement</th>';
+                echo '<th>Details</th>';
+                echo '<th>Status</th>';
+                echo '</tr>';
+                echo '<tr>';
+                echo '<td>';
+                echo $obj->product_code;
+                echo '</td>';
+                echo '<td>';
+                echo $obj->product_name;
+                echo '</td>';
+                echo '<td>';
+                echo $obj->date_of_order;
+                echo '</td>';
+                echo '<td>';
+                echo $obj->slot_time;
+                echo '</td>';
+                echo '<td>';
+                echo $q1_result->nature_of_sample;
+                echo '</td>';
+                echo '<td>';
+                echo $q1_result->magnetic;
+                echo '</td>';
+                echo '<td>';
+                echo $q1_result->magnetic_details;
+                echo '</td>';
+                echo '<td>';
+                echo $q1_result->measurement;
+                echo '</td>';
+                echo '<td>';
+                echo $q1_result->details;
+                echo '</td>';
+                if($obj->status==0)
+              {
+=======
               {
                 $q1=$mysqli->query("SELECT * FROM hrtem_order_details WHERE order_id=$oi");
                 $q1_result=$q1->fetch_object();
@@ -172,23 +216,129 @@ include 'php/head.php';
                 echo '</td>';
                  if($obj->status==0)
               {
+>>>>>>> 4ce82d73039e4591901f3ba6c39a7470ee7ab727
+              echo '<td>'.'Pending Admin Approval'.'</td>';
+              }
+              else if($obj->status==1)
+              {
+                 echo '<td>'.'Booking Approved'.'</td>';
+<<<<<<< HEAD
+              }
+
+              }
+              else if($obj->product_name=='MRS')
+              {
+                $q1=$mysqli->query("SELECT * FROM mrs_order_details WHERE order_id=$oi");
+                $q1_result=$q1->fetch_object();
+                echo '<th>Nature of Sample</th>';
+                echo '<th>Wavelength</th>';
+                echo '<th>Wavelength Justification</th>';
+                echo '<th>Scan Range From</th>';
+                echo '<th>Scan Range To</th>';
+                echo '<th>Details</th>';
+                echo '<th>Status</th>';
+                echo '</tr>';
+                echo '<tr>';
+                echo '<td>';
+                echo $obj->product_code;
+                echo '</td>';
+                echo '<td>';
+                echo $obj->product_name;
+                echo '</td>';
+                echo '<td>';
+                echo $obj->date_of_order;
+                echo '</td>';
+                echo '<td>';
+                echo $obj->slot_time;
+                echo '</td>';
+                echo '<td>';
+                echo $q1_result->nature_of_sample;
+                echo '</td>';
+                echo '<td>';
+                echo $q1_result->wavelength;
+                echo '</td>';
+                echo '<td>';
+                echo $q1_result->wavelength_justi;
+                echo '</td>';
+                echo '<td>';
+                echo $q1_result->scan_range_from;
+                echo '</td>';
+                echo '<td>';
+                echo $q1_result->scan_range_to;
+                echo '</td>';
+                echo '<td>';
+                echo $q1_result->details;
+                echo '</td>';
+                 if($obj->status==0)
+              {
               echo '<td>'.'Pending Admin Approval'.'</td>';
               }
               else if($obj->status==1)
               {
                  echo '<td>'.'Booking Approved'.'</td>';
               }
+
+
+
+              }
+              else if($obj->product_name='XRD')
+              {
+                $q1=$mysqli->query("SELECT * FROM xrd_order_details WHERE order_id=$oi");
+                $q1_result=$q1->fetch_object();
+                echo '<th>Nature of Sample</th>';
+                echo '<th>Scan Range From</th>';
+                echo '<th>Scan Range To</th>';
+                echo '<th>Details</th>';
+                echo '<th>Status</th>';
+                echo '</tr>';
+                echo '<tr>';
+                echo '<td>';
+                echo $obj->product_code;
+                echo '</td>';
+                echo '<td>';
+                echo $obj->product_name;
+                echo '</td>';
+                echo '<td>';
+                echo $obj->date_of_order;
+                echo '</td>';
+                echo '<td>';
+                echo $obj->slot_time;
+                echo '</td>';
+                echo '<td>';
+                echo $q1_result->nature_of_sample;
+                echo '</td>';
+                echo '<td>';
+                echo $q1_result->scan_range_from;
+                echo '</td>';
+                echo '<td>';
+                echo $q1_result->scan_range_to;
+                echo '</td>';
+                echo '<td>';
+                echo $q1_result->details;
+                echo '</td>';
+                 if($obj->status==0)
+              {
+              echo '<td>'.'Pending Admin Approval'.'</td>';
+              }
+              else if($obj->status==1)
+              {
+                 echo '<td>'.'Booking Approved'.'</td>';
+              }
+
+
+
+              }
+=======
+              }
               
               
 
               }
+>>>>>>> 4ce82d73039e4591901f3ba6c39a7470ee7ab727
               echo '</tr>';
               echo '</table>';
               echo '</div>';
-              echo '<div class="large-6">';
-              //echo '<img src="images/products/sports_band.jpg">';
-              echo '</div>';
-              echo '<p><hr></p>';
+
             }
           }
           else

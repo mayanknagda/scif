@@ -33,6 +33,7 @@ table .absorbing-column {
 }
 
 </style>
+
 <style>
 * {box-sizing: border-box}
 body {font-family: Verdana, sans-serif; margin:0}

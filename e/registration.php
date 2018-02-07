@@ -58,7 +58,8 @@ table .absorbing-column {
 
         <?php
         if($_SESSION['type']=="superuser"){
-            echo '<li><a href="hrtemrequests.php">HRTEM Requests</a></li>
+            echo '<li><a href="analysis.php">Analysis</a></li>
+            <li><a href="hrtemrequests.php">HRTEM Requests</a></li>
             <li><a href="ramanrequests.php">MRS Requests</a></li>
         <li><a href="xrdrequests.php">XRD Requests</a></li>
         <li><a href="bookingdata.php">View Booking Data</a></li>';

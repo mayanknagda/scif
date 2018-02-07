@@ -69,7 +69,8 @@ table .absorbing-column {
       <!-- Right Nav Section -->
       <ul class="right"><?php
         if($_SESSION['type']=="superuser"){
-            echo '<li><a href="registration.php">Registration Requests</a></li>';
+            echo '<li><a href="registration.php">Registration Requests</a></li>
+            <li><a href="analysis.php">Analysis</a></li>';
           }
           ?>
         <li><a href="hrtemrequests.php">HRTEM Requests</a></li>
@@ -90,7 +91,7 @@ table .absorbing-column {
         $name="HRTEM";
           $result = $mysqli->query("SELECT * FROM users cross join orders WHERE user_id=id AND status=0 AND product_name='$name'");
           if($result) {
-           
+
             while($obj = $result->fetch_object()) {
               $uid=$obj->order_id;
               $lq=$mysqli->query("SELECT * FROM hrtem_order_details WHERE order_id=$uid");
@@ -109,7 +110,7 @@ table .absorbing-column {
             echo '<th>Slot</th>';
             echo '<th>Approval</th>';
             echo '</tr>';
-            
+
             echo '<tr>';
             echo '<td>'.$obj->order_id.'</td>';
             echo '<td>'.$obj->fname.' '.$obj->lname.'</td>';
@@ -132,7 +133,7 @@ table .absorbing-column {
             echo '</table>';
             // End of first table
 
-            // Start of second table 
+            // Start of second table
             echo '<table>';
             echo '<tr>';
             echo '<th>Nature of Sample</th>';

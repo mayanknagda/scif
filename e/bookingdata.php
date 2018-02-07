@@ -48,6 +48,16 @@ echo '<!doctype html>
 
 .boxed {
   border: 1px solid green ;
+<<<<<<< HEAD
+}
+table
+{
+  margin-bottom: 0px;
+  table-layout: auto;
+  border-collapse: collapse;
+  width: 100%;
+}
+=======
 }
 table 
 {
@@ -56,12 +66,17 @@ table
   border-collapse: collapse;
   width: 100%;
 }
+>>>>>>> 4ce82d73039e4591901f3ba6c39a7470ee7ab727
 
 table td
 {
     border: 1px solid #ccc;
 }
+<<<<<<< HEAD
+table .absorbing-column
+=======
 table .absorbing-column 
+>>>>>>> 4ce82d73039e4591901f3ba6c39a7470ee7ab727
 {
     width: 100%;
 }
@@ -85,6 +100,7 @@ table .absorbing-column
       <!-- Right Nav Section -->
       <ul class="right">
         <li><a href="registration.php">Registration Requests</a></li>
+        <li><a href="analysis.php">Analysis</a></li>
         <li><a href="hrtemrequests.php">HRTEM Requests</a></li>
         <li><a href="ramanrequests.php">MRS Requests</a></li>
         <li><a href="xrdrequests.php">XRD Requests</a></li>
@@ -94,6 +110,7 @@ table .absorbing-column
       </section>
     </nav>
     <!-- End of the Navigation Bar-->
+<<<<<<< HEAD
 
     <!-- The Filter Section-->
     <div class="row">
@@ -119,6 +136,33 @@ table .absorbing-column
     <!--End of the Filter Section-->
 
 
+=======
+
+    <!-- The Filter Section-->
+    <div class="row">
+      <table>
+      <form action="bookingdata.php" method=POST>
+        <tr>
+      <td><input type="button" value="Print this page" onClick="window.print()"></td>
+
+      <td>Select Start Date <input type="text"  name="datestart" id="datepicker"> </td>
+      <td>Select End Date <input type="text"  name="dateend" id="datepicker2"> </td>
+      <td>
+          <select name="inst">
+          <option value="HRTEM">HRTEM</option>
+          <option value="RAMAN">RAMAN</option>
+          <option value="XRD">XRD</option>
+          </select>
+      </td>
+      <td><button type=submit  name="submitb" style="float:right;">Submit</button></td>
+      </tr>
+      </form>
+      </table>
+    </div>
+    <!--End of the Filter Section-->
+
+
+>>>>>>> 4ce82d73039e4591901f3ba6c39a7470ee7ab727
     <div class="row" style="margin-top:10px;">';
 
         if($filter_flag==1) // This executes when the user chooses to filter the result.
@@ -152,7 +196,7 @@ table .absorbing-column
                 $oi=$obj->order_id;
                 $q1=$mysqli->query("SELECT * FROM hrtem_order_details WHERE order_id=$oi");
                 $q1_result=$q1->fetch_object();
-              
+
             echo '<br>Order Details';
             echo '<table class="absorbing-column">';
             echo '<tr>';
@@ -309,20 +353,35 @@ table .absorbing-column
             echo '</table>';
             }
 
+<<<<<<< HEAD
+
+
+          } // end of while
+          echo 'Total Bookings : ';echo $count;
+        }// end of if
+=======
             
             
           } // end of while
           echo 'Total Bookings : ';echo $count;
         }// end of if 
+>>>>>>> 4ce82d73039e4591901f3ba6c39a7470ee7ab727
           else
           {
             echo 'No Bookings Found in the searched range.';
 
           }
+<<<<<<< HEAD
+
+
+
+
+=======
             
           
 
         
+>>>>>>> 4ce82d73039e4591901f3ba6c39a7470ee7ab727
         ?>
   </body>
 </html>

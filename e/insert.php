@@ -1,8 +1,14 @@
 <?php
 // Import PHPMailer classes into the global namespace
 // These must be at the top of your script, not inside a function
-
 //Load composer's autoloader
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+require 'vendor/autoload.php';
+//Load composer's autoloader
+if(isset($_POST['fname']))
+{
+
 include 'php/config.php';
 
 $fname = $_POST["fname"];
@@ -20,13 +26,7 @@ if($mysqli->query("INSERT INTO users (fname, lname, institute, iid, address, ema
 }
 
 
-// Import PHPMailer classes into the global namespace
-// These must be at the top of your script, not inside a function
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
 
-//Load composer's autoloader
-require 'vendor/autoload.php';
 
 $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
 try {
@@ -61,4 +61,9 @@ http://scif.epizy.com/verify-email.php?email='.$email.'&hash='.$hash.''; // Our 
     echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
 }
 header("location:login.php");
+}
+else
+{
+    echo '<h1 style="color: red">Dont"t Hack We are smart!</h1>';
+}
 ?>
